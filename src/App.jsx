@@ -57,32 +57,38 @@ const CONTENT = {
         {
           step: 1,
           title: "1 | CANDIDATE | 28-Mar-23",
-          text: "Commencement of informal candidature awareness campaign targeting key people across Africa and beyond."
+          text: "Commencement of informal candidature awareness campaign targeting key people across Africa and beyond.",
+          is_placeholder: false
         },
         {
           step: 2,
           title: "2 | ZAMBIA | 28-Feb-25",
-          text: "Candidature maiden announcement to SADC and request for support from SADC ICT Ministers."
+          text: "Candidature maiden announcement to SADC and request for support from SADC ICT Ministers.",
+          is_placeholder: false
         },
         {
           step: 3,
           title: "3 | SADC | 28-Feb-25",
-          text: "SADC ICT Ministers takes Decision 25 urging Member States to support the candidature of Eng. Mwale."
+          text: "SADC ICT Ministers takes Decision 25 urging Member States to support the candidature of Eng. Mwale.",
+          is_placeholder: false
         },
         {
           step: 4,
           title: "4 | SADC | 14-Mar-25",
-          text: "SADC Council takes Decision 39 recognizing Eng. Mwale as Zambia’s candidate besides that of South Africa. The decision urges the two countries to engage and advise the next Council meeting in August."
+          text: "SADC Council takes Decision 39 recognizing Eng. Mwale as Zambia’s candidate besides that of South Africa. The decision urges the two countries to engage and advise the next Council meeting in August.",
+          is_placeholder: false
         },
         {
           step: 5,
           title: "5 | ZAMBIA | 10-Apr-25",
-          text: "Candidature announcement to Africa during the ATU Prep meeting for WTDC-25 in Nairobi."
+          text: "Candidature announcement to Africa during the ATU Prep meeting for WTDC-25 in Nairobi.",
+          is_placeholder: false
         },
         {
           step: 6,
           title: "6 | TBA | DATE",
-          text: "Next milestone coming soon..."
+          text: "Next milestone coming soon...",
+          is_placeholder: true
         }
       ]
     },
@@ -199,8 +205,12 @@ const CONTENT = {
         }
       ],
       invitation_cta: {
-        text: "The Member State of Zambia and I seek your support on the basis of my demonstrated competency to deliver the next ATU transformation as outlined in my 10-point Agenda for the benefit of Member States, RECs, Africa and ATU itself.",
-        closing_line: "Support Zambia. Support Me. Support Assured Advancement."
+        text: "Digital technology, being the driver of the Fourth Industrial Revolution we are in, is evidently crucial. The ATU remains a key continental body driving digital transformation agendas and must, therefore, be entrusted to the most competent hands. The 2026 ATU Secretary General election presents a unique opportunity that Member States cannot afford to miss. With 13 years of impactful service at ATU at Director level, reporting directly to the Secretary General, I am uniquely positioned to serve. My credentials include three directly relevant degrees; extensive hands-on experience; innovativeness; rich institutional memory; diligence and loyalty; proven consensus-building and diplomatic skills; a vast network of key sector stakeholders across Africa and beyond; deep situational awareness of strategic issues; and a broad-based skill set spanning legal, partnership, financial, and software development domains, among others. The Member State of Zambia and I respectfully seek your support on the basis of my demonstrated capacity to deliver the next phase of ATU’s transformation, as outlined in my 10-point Agenda, for the benefit of Member States, RECs, Africa, and the ATU itself.",
+        closing_line: "Support Zambia. Support Me. Support Assured Advancement.",
+        linkedin_support: {
+          label: "Support the Candidature on LinkedIn",
+          url: "https://www.linkedin.com"
+        }
       }
     },
     contact_form: {
@@ -523,13 +533,28 @@ const CountUp = ({ end, suffix = "", duration = 2000 }) => {
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative bg-white rounded-lg w-full max-w-4xl shadow-2xl mt-0">
-        <button onClick={onClose} className="absolute -top-10 right-0 text-white hover:text-[#C5A059]">
-          <X size={32} />
-        </button>
-        {children}
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm overflow-y-auto">
+      {/* Mobile sheet (full screen) + Desktop centered card */}
+      <div className="min-h-[100dvh] flex items-start justify-center p-0 sm:p-4 sm:pt-20">
+        <div className="w-full h-[100dvh] sm:h-auto sm:max-h-[calc(100vh-8rem)] sm:max-w-4xl bg-white sm:rounded-lg shadow-2xl overflow-hidden">
+          {/* Sticky header for mobile close button */}
+          <div className="sticky top-0 z-10 flex items-center justify-end bg-white/95 backdrop-blur border-b border-gray-100 px-4 py-3">
+            <button
+              onClick={onClose}
+              className="inline-flex items-center justify-center rounded-full p-2 text-[#013220] hover:text-[#C5A059] hover:bg-black/5 transition"
+              aria-label="Close"
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-0">
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -628,7 +653,7 @@ const PrioritiesSection = () => {
                 <div className="text-center max-w-4xl mx-auto mb-16">
                     <SectionTitle>{section_title}</SectionTitle>
                     <p className="text-[#C5A059] font-bold tracking-widest uppercase mb-4 text-sm">{section_subtitle}</p>
-                    <p className="text-gray-600 leading-relaxed">{intro_context}</p>
+                    <p className="text-gray-600 leading-relaxed text-justify">{intro_context}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -652,6 +677,23 @@ const PrioritiesSection = () => {
 
 const MilestonesSection = () => {
     const { section_title, note, timeline } = CONTENT.home.milestones;
+    const now = new Date();
+    const hasPublishedNext = timeline.some(
+      (item) => !item.is_placeholder && item.publish_on && new Date(item.publish_on) <= now
+    );
+
+    const visibleTimeline = timeline.filter((item) => {
+      // Hide future milestones until their publish_on date
+      if (!item.is_placeholder && item.publish_on) {
+        return new Date(item.publish_on) <= now;
+      }
+      // Hide the placeholder once the next milestone has been published
+      if (item.is_placeholder) {
+        return !hasPublishedNext;
+      }
+      // Always show normal milestones without publish_on
+      return true;
+    });
 
     return (
         <section className="py-20 bg-[#F4F7F6] relative overflow-hidden">
@@ -666,7 +708,7 @@ const MilestonesSection = () => {
                     <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform md:-translate-x-1/2"></div>
 
                     <div className="space-y-12">
-                        {timeline.map((item, index) => (
+                        {visibleTimeline.map((item, index) => (
                             <div key={item.step} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                 {/* Date Badge (Desktop Center) */}
                                 <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#013220] border-4 border-[#C5A059] z-20 flex items-center justify-center">
@@ -676,7 +718,7 @@ const MilestonesSection = () => {
                                 <div className="ml-12 md:ml-0 md:w-1/2 px-4 md:px-12 w-full">
                                     <div className={`bg-white p-6 rounded-lg shadow-md border-l-4 border-[#C5A059] relative hover:shadow-xl transition-shadow`}>
                                         <h3 className="text-lg font-bold text-[#013220] mb-2">{item.title}</h3>
-                                        <p className="text-gray-800 text-sm leading-relaxed">{item.text}</p>
+                                        <p className="text-gray-800 text-sm leading-relaxed text-justify">{item.text}</p>
                                     </div>
                                 </div>
                                 {/* Spacer for opposite side */}
@@ -698,7 +740,7 @@ const TransformationSection = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-4xl mx-auto mb-12">
                     <SectionTitle>ATU’s Remarkable Transformation</SectionTitle>
-                    <p className="text-gray-600 max-w-2xl mx-auto">{intro}</p>
+                    <p className="text-gray-600 max-w-2xl mx-auto text-justify">{intro}</p>
                 </div>
 
                 <div className="bg-white rounded-xl shadow-2xl overflow-hidden border-t-8 border-[#C5A059]">
@@ -755,6 +797,31 @@ const TransformationSection = () => {
 
 const HomePage = ({ onNavigate }) => {
   const [showVideo, setShowVideo] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
+
+  useEffect(() => {
+    if (!showVideo) {
+      setVideoSrc("");
+      return;
+    }
+
+    // Autoplay only on desktop (and respect reduced-motion preferences)
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const baseUrl = CONTENT.home.hero.video;
+    const joiner = baseUrl.includes("?") ? "&" : "?";
+
+    const params = new URLSearchParams({
+      autoplay: isDesktop && !prefersReducedMotion ? "1" : "0",
+      mute: isDesktop && !prefersReducedMotion ? "1" : "0",
+      rel: "0",
+      modestbranding: "1"
+    });
+
+    // Set iframe src only when the modal is open (also enables lazy-load)
+    setVideoSrc(`${baseUrl}${joiner}${params.toString()}`);
+  }, [showVideo]);
 
   return (
     <div className="animate-fade-in">
@@ -805,16 +872,20 @@ const HomePage = ({ onNavigate }) => {
       </section>
 
       <Modal isOpen={showVideo} onClose={() => setShowVideo(false)}>
-        <div className="aspect-video w-full">
-            <iframe 
-                width="100%" 
-                height="100%" 
-                src={CONTENT.home.hero.video} 
-                title="Candidate Speech" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
+        <div className="aspect-video w-full bg-black">
+          {videoSrc ? (
+            <iframe
+              width="100%"
+              height="100%"
+              src={videoSrc}
+              title="Candidate Speech"
+              frameBorder="0"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             ></iframe>
+          ) : null}
         </div>
       </Modal>
 
@@ -907,7 +978,7 @@ const HomePage = ({ onNavigate }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {CONTENT.home.background.quotes.map((quote, idx) => (
                     <div key={idx} className="bg-gray-50 p-6 rounded-tl-3xl rounded-br-3xl">
-                        <p className="text-gray-700 italic mb-4 font-serif">"{quote.text}"</p>
+                        <p className="text-gray-700 italic mb-4 font-serif text-justify">"{quote.text}"</p>
                         <div className="font-bold text-xs text-[#013220] uppercase">{quote.author}</div>
                     </div>
                 ))}
@@ -919,6 +990,29 @@ const HomePage = ({ onNavigate }) => {
                  <div className="h-8 w-24 bg-gray-300 rounded"></div>
                  <div className="h-8 w-24 bg-gray-300 rounded"></div>
             </div>
+        </div>
+      </section>
+
+      {/* Invitation CTA */}
+      <section className="py-20 bg-[#F4F7F6] border-t border-gray-200">
+        <div className="container mx-auto px-6 max-w-3xl text-center">
+          <div className="bg-white p-10 rounded-lg shadow-lg border-t-4 border-[#C5A059]">
+            <p className="text-lg text-[#013220] mb-6 font-serif italic text-justify">
+              {CONTENT.home.background.invitation_cta.text}
+            </p>
+            <div className="font-bold text-[#C5A059] text-xl mb-2">{CONTENT.home.background.invitation_cta.closing_line}</div>
+            <a
+              href={CONTENT.home.background.invitation_cta.linkedin_support.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 bg-[#0A66C2] text-white px-6 py-3 font-bold rounded-sm hover:bg-[#004182] transition uppercase tracking-widest text-xs"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M20.447 20.452H17.21V14.86c0-1.334-.027-3.051-1.86-3.051-1.86 0-2.144 1.45-2.144 2.95v5.693H9.07V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.286 0 3.89 2.164 3.89 4.977v6.597zM5.337 7.433c-1.004 0-1.816-.814-1.816-1.817 0-1.003.812-1.816 1.816-1.816 1.003 0 1.816.813 1.816 1.816 0 1.003-.813 1.817-1.816 1.817zM6.956 20.452H3.72V9h3.237v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+              </svg>
+              {CONTENT.home.background.invitation_cta.linkedin_support.label}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -1029,10 +1123,10 @@ const VisionPage = () => (
         </div>
         <div className="mt-16 p-8 bg-[#F4F7F6] border-l-4 border-[#C5A059] rounded-r-lg">
             <h3 className="font-bold text-[#013220] mb-4">Invitation for Support</h3>
-            <p className="text-sm text-gray-700 leading-relaxed italic">
+            <p className="text-sm text-gray-700 leading-relaxed italic text-justify">
                "{CONTENT.home.background.invitation_cta.text}"
             </p>
-             <p className="text-sm text-gray-700 leading-relaxed italic mt-2 font-bold">
+             <p className="text-sm text-gray-700 leading-relaxed italic mt-2 font-bold text-justify">
                {CONTENT.home.background.invitation_cta.closing_line}
             </p>
             <div className="mt-4 text-right font-bold text-[#013220] font-sans">© Eng. Kezias Kazuba MWALE</div>
@@ -1080,7 +1174,7 @@ const FocusPage = () => {
                              <h2 className="text-3xl font-bold text-[#013220]">{activeContent.title}</h2>
                         </div>
                         
-                        <div className="mb-8 text-lg text-gray-700 leading-relaxed font-light">
+                        <div className="mb-8 text-lg text-gray-700 leading-relaxed font-light text-justify">
                             {activeContent.intro}
                         </div>
 
