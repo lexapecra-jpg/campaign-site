@@ -1234,8 +1234,8 @@ export default function App() {
             className="font-bold text-2xl tracking-tighter text-[#013220] cursor-pointer flex flex-col leading-none"
             onClick={() => setPage('home')}
           >
-            <span className={scrolled ? "" : "text-white"}>MWALE</span>
-            <span className="text-[10px] tracking-widest text-[#C5A059] uppercase">ATU 2026</span>
+            <span className={scrolled ? "" : "text-white"}>Kesias Mwale</span>
+            <span className="text-[11px] tracking-widest text-[#C5A059] uppercase">SG ATU 2026</span>
           </div>
 
           {/* Desktop Nav */}
