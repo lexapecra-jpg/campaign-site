@@ -497,8 +497,8 @@ const CountUp = ({ end, suffix = "", duration = 2000 }) => {
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative bg-white rounded-lg w-full max-w-4xl shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 bg-black/80 backdrop-blur-sm overflow-y-auto">
+      <div className="relative bg-white rounded-lg w-full max-w-4xl shadow-2xl mt-0">
         <button onClick={onClose} className="absolute -top-10 right-0 text-white hover:text-[#C5A059]">
           <X size={32} />
         </button>
