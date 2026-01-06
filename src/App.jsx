@@ -54,9 +54,36 @@ const CONTENT = {
       section_title: "Milestones",
       note: "OF PARTICULAR SIGNIFICANCE IS DECISION 25 OF THE SADC ICT MINISTERS",
       timeline: [
-        { step: 1, label: "CANDIDATE", date: "28-Mar-23", desc: "Commencement of informal candidature awareness campaign." },
-        { step: 3, label: "SADC", date: "28-Feb-25", desc: "SADC ICT Ministers takes Decision 25 urging support for Eng. Mwale." },
-        { step: 5, label: "ZAMBIA", date: "10-Apr-25", desc: "Candidature announcement to Africa during ATU Prep meeting in Nairobi." }
+        {
+          step: 1,
+          title: "1 | CANDIDATE | 28-Mar-23",
+          text: "Commencement of informal candidature awareness campaign targeting key people across Africa and beyond."
+        },
+        {
+          step: 2,
+          title: "2 | ZAMBIA | 28-Feb-25",
+          text: "Candidature maiden announcement to SADC and request for support from SADC ICT Ministers."
+        },
+        {
+          step: 3,
+          title: "3 | SADC | 28-Feb-25",
+          text: "SADC ICT Ministers takes Decision 25 urging Member States to support the candidature of Eng. Mwale."
+        },
+        {
+          step: 4,
+          title: "4 | SADC | 14-Mar-25",
+          text: "SADC Council takes Decision 39 recognizing Eng. Mwale as Zambia’s candidate besides that of South Africa. The decision urges the two countries to engage and advise the next Council meeting in August."
+        },
+        {
+          step: 5,
+          title: "5 | ZAMBIA | 10-Apr-25",
+          text: "Candidature announcement to Africa during the ATU Prep meeting for WTDC-25 in Nairobi."
+        },
+        {
+          step: 6,
+          title: "6 | TBA | DATE",
+          text: "Next milestone coming soon..."
+        }
       ]
     },
     priorities: {
@@ -641,25 +668,17 @@ const MilestonesSection = () => {
                     <div className="space-y-12">
                         {timeline.map((item, index) => (
                             <div key={item.step} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                                
                                 {/* Date Badge (Desktop Center) */}
                                 <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#013220] border-4 border-[#C5A059] z-20 flex items-center justify-center">
                                     <div className="w-2 h-2 bg-white rounded-full"></div>
                                 </div>
-
                                 {/* Content Card */}
                                 <div className="ml-12 md:ml-0 md:w-1/2 px-4 md:px-12 w-full">
                                     <div className={`bg-white p-6 rounded-lg shadow-md border-l-4 border-[#C5A059] relative hover:shadow-xl transition-shadow`}>
-                                        <div className="flex justify-between items-start mb-2">
-                                            <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest">{item.label}</span>
-                                            <span className="text-xs font-bold text-gray-400 flex items-center gap-1">
-                                                <Calendar size={12} /> {item.date}
-                                            </span>
-                                        </div>
-                                        <p className="text-gray-800 text-sm leading-relaxed">{item.desc}</p>
+                                        <h3 className="text-lg font-bold text-[#013220] mb-2">{item.title}</h3>
+                                        <p className="text-gray-800 text-sm leading-relaxed">{item.text}</p>
                                     </div>
                                 </div>
-                                
                                 {/* Spacer for opposite side */}
                                 <div className="md:w-1/2"></div>
                             </div>
