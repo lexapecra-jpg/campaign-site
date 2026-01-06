@@ -126,7 +126,8 @@ const CONTENT = {
           subtitle: "Vision & 10-Point Agenda",
           file_type: "PDF",
           category: "Official Dossier",
-          url: "#"
+          url: "/docs/candidature-brochure.pdf",
+          disabled: false
         },
         {
           id: "doc_cv",
@@ -134,7 +135,8 @@ const CONTENT = {
           subtitle: "Eng. Kezias Kazuba Mwale",
           file_type: "PDF",
           category: "Official Dossier",
-          url: "#"
+          url: "/docs/kezias-kazuba-mwale-cv.pdf",
+          disabled: false
         },
         {
           id: "doc_zambia",
@@ -142,7 +144,8 @@ const CONTENT = {
           subtitle: "Official Nominating Member State Letter",
           file_type: "PDF",
           category: "Diplomatic Support",
-          url: "#"
+          url: "/docs/zambia-nominating-letter.pdf",
+          disabled: false
         }
       ]
     },
@@ -855,7 +858,14 @@ const HomePage = ({ onNavigate }) => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {CONTENT.home.dossier.documents.map((item, idx) => (
-                    <div key={item.id} className="bg-white p-8 rounded shadow hover:shadow-lg transition group cursor-pointer border border-transparent hover:border-[#C5A059]">
+                    <a
+                      key={item.id}
+                      href={item.disabled ? undefined : item.url}
+                      target={item.disabled ? undefined : "_blank"}
+                      rel={item.disabled ? undefined : "noopener noreferrer"}
+                      className={`bg-white p-8 rounded shadow hover:shadow-lg transition group border border-transparent hover:border-[#C5A059] ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                      onClick={(e) => { if (item.disabled) e.preventDefault(); }}
+                    >
                         <div className="text-[#C5A059] mb-4 group-hover:scale-110 transition duration-300">
                              {item.id === 'doc_brochure' ? <Globe /> : item.id === 'doc_cv' ? <FileText /> : <Award />}
                         </div>
@@ -863,9 +873,9 @@ const HomePage = ({ onNavigate }) => {
                         <h3 className="text-xl font-bold text-[#013220] mb-2">{item.title}</h3>
                         <p className="text-sm text-gray-500 mb-6">{item.subtitle}</p>
                         <div className="flex items-center text-xs font-bold uppercase tracking-widest text-[#013220]">
-                            Download {item.file_type} <Download size={14} className="ml-2" />
+                            {item.disabled ? 'Coming soon' : `Open ${item.file_type}`} <Download size={14} className="ml-2" />
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
         </div>
