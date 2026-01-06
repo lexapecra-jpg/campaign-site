@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import mwaleImg from "./assets/mwale.jpg";
+import mwale1Img from "./assets/mwale1.jpg";
 import { 
   Menu, X, Download, ChevronRight, Globe, 
   Award, Briefcase, Users, Play, FileText, 
@@ -22,7 +22,7 @@ const CONTENT = {
       role: "Director for Radiocommunications",
       election: "Candidate for Secretary General of the ATU 2026",
       tagline: "Advancing ATU Transformation – Deepening its Contribution to the Digital Transformation Agendas",
-      image: "https://lh3.googleusercontent.com/d/1z7ZIw4hRZNITUVVosF6mMvdPyHLguDT6", 
+      image: mwale1Img, 
       video: "https://www.youtube.com/embed/hznKq9AvyOo",
       cta_primary: "Request High-Level Consultation",
       cta_secondary: "Open Candidate Dossier"
@@ -773,8 +773,9 @@ const HomePage = ({ onNavigate }) => {
               alt="Eng. Mwale" 
               className="relative w-full max-w-md object-cover rounded-lg shadow-2xl border-b-8 border-[#C5A059]"
               onError={(e) => {
-                e.target.onerror = null; 
-                e.target.src = {mwaleImg}; // Professional Fallback
+                e.target.onerror = null;
+                if (!mwale1Img) return;
+                e.target.src = mwale1Img; // Local fallback
               }}
             />
           </div>
