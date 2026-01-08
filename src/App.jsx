@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import mwale1Img from "./assets/mwale1.jpg";
-import { 
-  Menu, X, Download, ChevronRight, Globe, 
-  Award, Briefcase, Users, Play, FileText, 
+import mwale2Img from "./assets/mwale2.jpg";
+import {
+  Menu, X, Download, ChevronRight, Globe,
+  Award, Briefcase, Users, Play, FileText,
   CheckCircle, ArrowRight, Mail, ChevronDown,
   Calendar, Flag, TrendingUp, Send
 } from 'lucide-react';
@@ -16,19 +17,48 @@ const CONTENT = {
     primary_green: "#013220",
     accent_gold: "#C5A059"
   },
+  gallery: {
+    page_title: "Gallery",
+    page_subtitle: "CAMPAIGN MOMENTS, DIPLOMATIC ENGAGEMENTS & FIELD IMPACT",
+    upload_help_title: "How to upload",
+    upload_help_steps: [
+      "1) Add images into: /public/gallery (example: mwale-01.jpg).",
+      "2) Add each image entry into CONTENT.gallery.items (use the JSON generator below).",
+      "3) Keep captions factual: event / location / date."
+    ],
+    categories: ["All", "Diplomacy", "Field", "Events", "Media"],
+    items: [
+      {
+        id: "g1",
+        src: "/gallery/mwale-01.jpg",
+        title: "Diplomatic Engagement",
+        caption: "High-level consultation — official meeting.",
+        category: "Diplomacy",
+        date: "2025"
+      },
+      {
+        id: "g2",
+        src: "/gallery/mwale-02.jpg",
+        title: "Programme Delivery",
+        caption: "Coordinating stakeholders towards measurable impact.",
+        category: "Events",
+        date: "2024"
+      }
+    ]
+  },
   home: {
     hero: {
       name: "Eng. Kezias Kazuba MWALE",
       role: "Director for Radiocommunications",
       election: "Candidate for Secretary General of the ATU 2026",
       tagline: "Advancing ATU Transformation – Deepening its Contribution to the Digital Transformation Agendas",
-      image: mwale1Img, 
+      image: mwale1Img,
       video: "https://www.youtube.com/embed/hznKq9AvyOo",
       cta_primary: "Request High-Level Consultation",
       cta_secondary: "Open Candidate Dossier"
     },
     anchors: [
-      "TRACK RECORD", "COMPETENCY", "CREDIBILITY", 
+      "TRACK RECORD", "COMPETENCY", "CREDIBILITY",
       "TRANSFORMATION", "INNOVATION", "LOYALTY", "PEOPLE"
     ],
     transformation: {
@@ -45,7 +75,7 @@ const CONTENT = {
       ]
     },
     stats: [
-      { label: "USD Billions Value Recovered", value: "31", suffix: "Bn+", desc: "For 31 beneficiary countries" }, 
+      { label: "USD Billions Value Recovered", value: "31", suffix: "Bn+", desc: "For 31 beneficiary countries" },
       { label: "New FM Channels", value: "18326", suffix: "", desc: "Result of GE84 Plan optimization" },
       { label: "MHz Spectrum Secured", value: "2477", suffix: "", desc: "Highest among all 6 world regions" },
       { label: "Common Positions Attained", value: "97.5", suffix: "%", desc: "Remarkable harmonization" }
@@ -149,6 +179,54 @@ const CONTENT = {
         }
       ]
     },
+    six_reasons: {
+      section_title: "Six Reasons",
+      section_subtitle: "THE SOLID BASIS FOR SUPPORTING MY CANDIDATURE",
+      items: [
+        {
+          id: "vision",
+          icon: "🚀",
+          title: "Credible Vision",
+          description: "Most appropriate vision for the next chapter of the ATU"
+        },
+        {
+          id: "credentials",
+          icon: "🎓",
+          title: "Strong Credentials",
+          description: "Strong competencies and highly relevant credentials to deliver the vision"
+        },
+        {
+          id: "experience",
+          icon: "⭐",
+          title: "Hands-on Experience",
+          description: "Hands-on experience, innovation prowess and rich institutional memory"
+        },
+        {
+          id: "track",
+          icon: "🪪",
+          title: "Unmatched Track Record",
+          description: "13 years of loyal, diligent, and impactful service to the ATU & Africa in general"
+        },
+        {
+          id: "awareness",
+          icon: "ℹ️",
+          title: "Rich Situational Awareness",
+          description: "Deep situational awareness of the challenges and opportunities"
+        },
+        {
+          id: "network",
+          icon: "🤝",
+          title: "Vast Network of Key People",
+          description: "Extensive network of people driving the digital sector in Africa and beyond"
+        }
+      ]
+    },
+    signature_quote: {
+      quote:
+        "Africa does not lack vision in digital transformation. What it needs is leadership with the courage, competence, and commitment to deliver.",
+      author: "Eng. Kezias Kazuba Mwale",
+      role: "Candidate for Secretary General, ATU 2026"
+    },
     dossier: {
       section_id: "candidate_dossier",
       section_title: "Official Candidate Dossier",
@@ -190,26 +268,56 @@ const CONTENT = {
         "Optimized the FM Sound Broadcasting Plan (GE84) for 18,326 new channels.",
         "Secretary of the Plenary for ATU Conferences (2014, 2018, 2022)."
       ],
-      quotes: [
-        {
-          text: "Kezias. I’ve known you for many years and have witnessed your commitment to Africa and ATU...",
-          author: "Senior Industry Peer"
-        },
-        {
-          text: "Best wishes Eng. Kezias Kazuba Mwale. You have been representing the Zambia Brand with integrity, professionalism and passion",
-          author: "Diplomatic Colleague"
-        },
-        {
-          text: "Kezias, you are indeed a highly experienced candidate for ATU SG who would be 1000% committed to achieving the goals of the ATU...",
-          author: "Member State Official"
-        }
-      ],
+      testimonials: {
+        section_title: "What people are saying",
+        section_subtitle: "THESE ARE NOT MERE WORDS",
+        source_label: "My LinkedIn as source",
+        cta_label: "Click here to view",
+        profile_url: "https://www.linkedin.com/in/eng-kezias-kazuba-mwale/",
+        items: [
+          {
+            text: "Kezias. I’ve known you for many years and have witnessed your commitment to Africa and ATU, your good work bringing stakeholders together, and your ability to communicate effectively complex issues. I wish you the best and no doubt, ATU would be on good hands.",
+            country: "Pan-African",
+            flag: "🌍"
+          },
+          {
+            text: "Best wishes Eng. Kezias Kazuba Mwale. You have been representing the Zambia Brand with integrity, professionalism and passion.",
+            country: "Zambia",
+            flag: "🇿🇲"
+          },
+          {
+            text: "I am excited at this nomination of Eng. Kezias Kazuba Mwale for the ATU SG. Africa will also be happy to have you coordinate the affairs of ATU to the next level. Wishing you great success during and after the elections.",
+            country: "Member State",
+            flag: "🌍"
+          },
+          {
+            text: "Kezias, you are indeed a highly experienced candidate for ATU SG who would be 1000% committed to achieving the goals of the ATU and its member states. Best wishes.",
+            country: "Member State",
+            flag: "🌍"
+          },
+          {
+            text: "Having experienced your leadership and management, I am happy to see your nomination. Praying and cheering you on! Wishing all the best. Godspeed!",
+            country: "Diaspora",
+            flag: "🌍"
+          },
+          {
+            text: "Best of luck Kezias. It’s always a proud moment to be nominated by your country to represent Africa. Your experience and reputation will hopefully land you where you belong.",
+            country: "Pan-African",
+            flag: "🌍"
+          },
+          {
+            text: "We appreciate this announcement of candidacy for the 2026 elections. With the diplomatic support of Zambia, your experience and expertise will certainly contribute to advocating for your candidacy. Good preparation and success!",
+            country: "Africa",
+            flag: "🌍"
+          }
+        ]
+      },
       invitation_cta: {
         text: "Digital technology, being the driver of the Fourth Industrial Revolution we are in, is evidently crucial. The ATU remains a key continental body driving digital transformation agendas and must, therefore, be entrusted to the most competent hands. The 2026 ATU Secretary General election presents a unique opportunity that Member States cannot afford to miss. With 13 years of impactful service at ATU at Director level, reporting directly to the Secretary General, I am uniquely positioned to serve. My credentials include three directly relevant degrees; extensive hands-on experience; innovativeness; rich institutional memory; diligence and loyalty; proven consensus-building and diplomatic skills; a vast network of key sector stakeholders across Africa and beyond; deep situational awareness of strategic issues; and a broad-based skill set spanning legal, partnership, financial, and software development domains, among others. The Member State of Zambia and I respectfully seek your support on the basis of my demonstrated capacity to deliver the next phase of ATU’s transformation, as outlined in my 10-point Agenda, for the benefit of Member States, RECs, Africa, and the ATU itself.",
         closing_line: "Support Zambia. Support Me. Support Assured Advancement.",
         linkedin_support: {
           label: "Support the Candidature on LinkedIn",
-          url: "https://www.linkedin.com"
+          url: "https://www.linkedin.com/in/eng-kezias-kazuba-mwale/"
         }
       }
     },
@@ -268,7 +376,7 @@ const CONTENT = {
         notification_routing: "coordination.office@mwale2026.zm",
         auto_reply: "Enabled: Professional acknowledgment receipt with the Candidate Dossier attached (PDF)."
       }
-    }
+    },
   },
   cv: {
     profile: `Upon invitation and since joining the ATU in 2012, Eng. Kezias Kazuba MWALE is renowned for his significant contributions towards its remarkable transformation in all spheres of the institution, namely; technical, legal, financial, administration, IT systems, and partnerships.
@@ -302,7 +410,21 @@ const CONTENT = {
       { title: "SECRETARY", desc: "of the supreme organ of the ATU i.e. the Conference of Plenipotentiaries (CPL) of 2014, 2018 and 2022." },
       { title: "CONCEPTION", desc: "of the ATU Digital Summit whose 2025 inaugural edition will launch a number of ground-breaking initiatives." },
       { title: "CONTRIBUTION", desc: "towards other ATU areas such as modernizing ATU communication channels notably personal acquisition and implementation of the dotAfrica domain." }
-    ]
+    ],
+    continental_contributions: {
+      title: "Contributions towards the Continental Digital Transformation Agenda",
+      intro:
+        "Our continent has witnessed remarkable digital transformation in recent times in terms of both connectivity and meaningful usage. In the case of internet usage for example, Africa has registered phenomenal growth from below 10% to about 43% over the decade, and even more significantly, immense leverage of the connectivity for pervasive personal communications to e-government services. I have had the honor to contribute to this transformation since I began to serve the ATU in 2012.",
+      lead_in: "Some of the notable ways include:",
+      items: [
+        "Member of AU Task Force on Digital Transformation Strategy",
+        "Member of AfCFTA taskforce for communication services",
+        "Member of the RASCOM Stakeholders Working Group",
+        "Development of the ATU framework on 4th Industrial Revolution (4IR)",
+        "Conception of the ATU Digital Summit as the ATU biennial flagship event",
+        "Implementation of the dotAfrica domain (https://atuat.africa) as part of promotion of the dotAfrica domain"
+      ]
+    }
   },
   vision: {
     intro: `The African Telecommunications Union (ATU) is a key continental institution: it is both the African Union’s specialized institution in the field of Telecommunications/ICTs (now digital), and the International Telecommunication Union’s regional telecommunications organization for Africa. It has a highly noble mission given that we are in the digital driven era “to accelerate the development of telecommunications/ICTs in Africa in order to achieve digital economies”. The institution envisions an “inclusive information society and strong digital economies for social, economic and environmentally sustainable development in Africa”.
@@ -466,9 +588,9 @@ const SpectrumBackground = () => {
         ctx.beginPath();
         for (let x = 0; x < canvas.width; x += 5) {
           // Complex wave math for "spectrum" look
-          const y = canvas.height / 2 + 
-                    Math.sin(x * 0.005 + t * 0.01 + i) * 60 + 
-                    Math.sin(x * 0.01 + t * 0.02) * 20;
+          const y = canvas.height / 2 +
+            Math.sin(x * 0.005 + t * 0.01 + i) * 60 +
+            Math.sin(x * 0.01 + t * 0.02) * 20;
           ctx.lineTo(x, y);
         }
         ctx.stroke();
@@ -578,7 +700,7 @@ const ContactForm = ({ config }) => {
         <h3 className="text-xl font-bold text-white mb-2">Request Received</h3>
         <p className="text-gray-200">{config.submission_logic.success_message}</p>
         <div className="mt-4 text-xs text-[#C5A059] uppercase tracking-widest border-t border-white/10 pt-4 w-full">
-           Routing to: {config.submission_logic.notification_routing}
+          Routing to: {config.submission_logic.notification_routing}
         </div>
       </div>
     );
@@ -589,51 +711,51 @@ const ContactForm = ({ config }) => {
       <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059]"></div>
       <h3 className="text-xl font-bold text-white mb-2">{config.form_title}</h3>
       <p className="text-xs text-gray-300 mb-6">{config.form_description}</p>
-      
+
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {config.fields.slice(0, 2).map((field, idx) => (
-             <input 
-                key={idx}
-                type={field.type} 
-                placeholder={field.placeholder} 
-                required={field.required}
-                className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] placeholder-gray-500 transition-all" 
-             />
+            <input
+              key={idx}
+              type={field.type}
+              placeholder={field.placeholder}
+              required={field.required}
+              className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] placeholder-gray-500 transition-all"
+            />
           ))}
         </div>
-        
+
         {config.fields.slice(2).map((field, idx) => {
-           if (field.type === 'select') {
-             return (
-               <div key={idx} className="relative">
-                 <select className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] appearance-none cursor-pointer">
-                   <option value="">{field.label}...</option>
-                   {field.options.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
-                 </select>
-                 <ChevronDown className="absolute right-3 top-3 text-gray-500 pointer-events-none" size={16} />
-               </div>
-             );
-           }
-           if (field.type === 'textarea') {
-              return (
-                <textarea 
-                  key={idx}
-                  placeholder={field.label} 
-                  rows="4" 
-                  className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] placeholder-gray-500"
-                ></textarea>
-              );
-           }
-           return (
-              <input 
+          if (field.type === 'select') {
+            return (
+              <div key={idx} className="relative">
+                <select className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] appearance-none cursor-pointer">
+                  <option value="">{field.label}...</option>
+                  {field.options.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
+                </select>
+                <ChevronDown className="absolute right-3 top-3 text-gray-500 pointer-events-none" size={16} />
+              </div>
+            );
+          }
+          if (field.type === 'textarea') {
+            return (
+              <textarea
                 key={idx}
-                type={field.type} 
-                placeholder={field.label} 
-                required={field.required}
-                className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] placeholder-gray-500" 
-             />
-           );
+                placeholder={field.label}
+                rows="4"
+                className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] placeholder-gray-500"
+              ></textarea>
+            );
+          }
+          return (
+            <input
+              key={idx}
+              type={field.type}
+              placeholder={field.label}
+              required={field.required}
+              className="w-full p-3 bg-white/90 border border-transparent rounded focus:border-[#C5A059] focus:bg-white outline-none text-[#013220] placeholder-gray-500"
+            />
+          );
         })}
 
         <button className="w-full bg-[#C5A059] text-white py-4 font-bold hover:bg-[#b08d4b] transition duration-300 uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg mt-4">
@@ -645,152 +767,425 @@ const ContactForm = ({ config }) => {
 };
 
 const PrioritiesSection = () => {
-    const { section_title, section_subtitle, intro_context, agenda_items } = CONTENT.home.priorities;
+  const { section_title, section_subtitle, intro_context, agenda_items } = CONTENT.home.priorities;
 
-    return (
-        <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-                <div className="text-center max-w-4xl mx-auto mb-16">
-                    <SectionTitle>{section_title}</SectionTitle>
-                    <p className="text-[#C5A059] font-bold tracking-widest uppercase mb-4 text-sm">{section_subtitle}</p>
-                    <p className="text-gray-600 leading-relaxed text-justify">{intro_context}</p>
-                </div>
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <SectionTitle>{section_title}</SectionTitle>
+          <p className="text-[#C5A059] font-bold tracking-widest uppercase mb-4 text-sm">{section_subtitle}</p>
+          <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
+            {intro_context}
+          </p>
+        </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {agenda_items.map((item, index) => (
-                        <div key={item.id} className="group p-8 bg-gray-50 border border-gray-100 hover:border-[#C5A059] hover:shadow-lg transition-all duration-300 rounded-lg relative overflow-hidden">
-                             <div className="absolute top-0 right-0 p-4 opacity-10 font-black text-6xl text-[#013220] select-none group-hover:opacity-20 transition">
-                                 {String(index + 1).padStart(2, '0')}
-                             </div>
-                             <div className="relative z-10">
-                                 <div className="h-1 w-12 bg-[#C5A059] mb-4 group-hover:w-20 transition-all"></div>
-                                 <h3 className="text-xl font-bold text-[#013220] mb-3 uppercase leading-tight pr-8">{item.title}</h3>
-                                 <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                             </div>
-                        </div>
-                    ))}
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {agenda_items.map((item, index) => (
+            <div key={item.id} className="group p-8 bg-gray-50 border border-gray-100 hover:border-[#C5A059] hover:shadow-lg transition-all duration-300 rounded-lg relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 font-black text-6xl text-[#013220] select-none group-hover:opacity-20 transition">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+              <div className="relative z-10">
+                <div className="h-1 w-12 bg-[#C5A059] mb-4 group-hover:w-20 transition-all"></div>
+                <h3 className="text-xl font-bold text-[#013220] mb-3 uppercase leading-tight pr-8">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SixReasonsSection = () => {
+  const s = CONTENT.home.six_reasons;
+
+  return (
+    <section className="py-24 bg-[#F4F7F6] relative overflow-hidden">
+      {/* subtle gold texture */}
+      <div
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#C5A059 1px, transparent 1px)",
+          backgroundSize: "26px 26px"
+        }}
+      ></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <SectionTitle>{s.section_title}</SectionTitle>
+
+          <div className="mt-4 flex items-center justify-center">
+            <span className="h-px w-10 bg-[#C5A059] opacity-80"></span>
+            <span className="mx-3 text-xs md:text-sm uppercase tracking-[0.35em] text-gray-500">
+              {s.section_subtitle}
+            </span>
+            <span className="h-px w-10 bg-[#C5A059] opacity-80"></span>
+          </div>
+
+          <p className="mt-6 text-gray-600 leading-relaxed text-center">
+            A concise, high-confidence rationale—designed for fast scanning by decision-makers.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 max-w-6xl mx-auto">
+          {s.items.map((item) => (
+            <div key={item.id} data-reveal className="reveal">
+              <div className="group h-full bg-white/80 backdrop-blur-md border border-black/5 rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden">
+                {/* gold micro top line */}
+                <div className="h-[3px] w-full bg-[#C5A059] opacity-80"></div>
+
+                <div className="p-7 md:p-8">
+                  <div className="flex items-start gap-4">
+                    {/* Icon badge */}
+                    <div className="w-14 h-14 rounded-xl bg-[#013220]/5 border border-[#013220]/10 flex items-center justify-center text-2xl shrink-0 group-hover:bg-[#013220]/10 transition">
+                      {item.icon}
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg md:text-xl font-extrabold text-[#013220] tracking-tight">
+                        {item.title}
+                      </h3>
+                      <div className="mt-3 h-[2px] w-10 bg-[#C5A059] opacity-80 group-hover:w-16 transition-all"></div>
+                    </div>
+                  </div>
+
+                  <p className="mt-5 text-gray-700 leading-relaxed text-justify">
+                    {item.description}
+                  </p>
+
+                  {/* Footer micro-meta */}
+                  <div className="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
+                    <span className="text-[11px] uppercase tracking-widest text-gray-500">
+                      Reason
+                    </span>
+                    <span className="text-[11px] uppercase tracking-widest text-[#C5A059] font-bold">
+                      {String(s.items.findIndex((x) => x.id === item.id) + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </div>
+
+                {/* hover wash */}
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#C5A059]/10 via-transparent to-[#013220]/5"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Closing divider */}
+        <div className="mt-16 flex justify-center">
+          <div className="h-px w-40 bg-[#C5A059] opacity-60"></div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SignatureQuoteSection = () => {
+  const q = CONTENT.home.signature_quote;
+
+  return (
+    <section className="py-20 bg-[#013220] text-white relative overflow-hidden">
+      {/* Subtle gold texture */}
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#C5A059 1px, transparent 1px)",
+          backgroundSize: "22px 22px"
+        }}
+      ></div>
+
+      {/* Soft vignette */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/10 via-transparent to-black/30"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Quote */}
+          <div className="lg:col-span-7">
+            <div data-reveal className="reveal">
+              <div className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.35em] text-white/70">
+                <span className="h-px w-10 bg-[#C5A059] opacity-80"></span>
+                Signature Quote
+              </div>
+
+              <blockquote className="mt-6 font-serif italic text-2xl md:text-3xl leading-snug text-white/95 text-justify">
+                “{q.quote}”
+              </blockquote>
+
+              <div className="mt-8 flex items-center gap-4">
+                <div className="h-px w-16 bg-[#C5A059] opacity-90"></div>
+                <div>
+                  <div className="font-bold text-[#C5A059] tracking-wide">
+                    {q.author}
+                  </div>
+                  <div className="text-xs uppercase tracking-widest text-white/70">
+                    {q.role}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Portrait */}
+          <div className="lg:col-span-5">
+            <div data-reveal className="reveal">
+              <div className="relative">
+                {/* Gold accent edge */}
+                <div className="absolute -inset-2 rounded-2xl border border-[#C5A059]/35"></div>
+                <div className="absolute -left-6 top-10 h-24 w-1 bg-[#C5A059] opacity-80 hidden lg:block"></div>
+
+                <img
+                  src={mwale2Img}
+                  alt="Eng. Kezias Kazuba Mwale"
+                  className="relative w-full max-w-md mx-auto object-cover rounded-2xl shadow-2xl border-b-8 border-[#C5A059]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 const MilestonesSection = () => {
-    const { section_title, note, timeline } = CONTENT.home.milestones;
-    const now = new Date();
-    const hasPublishedNext = timeline.some(
-      (item) => !item.is_placeholder && item.publish_on && new Date(item.publish_on) <= now
-    );
+  const { section_title, note, timeline } = CONTENT.home.milestones;
+  const now = new Date();
+  const hasPublishedNext = timeline.some(
+    (item) => !item.is_placeholder && item.publish_on && new Date(item.publish_on) <= now
+  );
 
-    const visibleTimeline = timeline.filter((item) => {
-      // Hide future milestones until their publish_on date
-      if (!item.is_placeholder && item.publish_on) {
-        return new Date(item.publish_on) <= now;
-      }
-      // Hide the placeholder once the next milestone has been published
-      if (item.is_placeholder) {
-        return !hasPublishedNext;
-      }
-      // Always show normal milestones without publish_on
-      return true;
-    });
+  const visibleTimeline = timeline.filter((item) => {
+    // Hide future milestones until their publish_on date
+    if (!item.is_placeholder && item.publish_on) {
+      return new Date(item.publish_on) <= now;
+    }
+    // Hide the placeholder once the next milestone has been published
+    if (item.is_placeholder) {
+      return !hasPublishedNext;
+    }
+    // Always show normal milestones without publish_on
+    return true;
+  });
 
-    return (
-        <section className="py-20 bg-[#F4F7F6] relative overflow-hidden">
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center mb-16">
-                    <SectionTitle>{section_title}</SectionTitle>
-                    <p className="text-[#013220] font-serif italic max-w-2xl mx-auto border-b border-[#C5A059] pb-4 inline-block">{note}</p>
+  return (
+    <section className="py-20 bg-[#F4F7F6] relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <SectionTitle>{section_title}</SectionTitle>
+          <p className="text-[#C5A059] font-bold tracking-widest uppercase mb-4 text-sm">
+            {note}
+          </p>
+          <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
+            A chronological view of key moments shaping the candidature and regional support.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative">
+          {/* Vertical Line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform md:-translate-x-1/2"></div>
+
+          <div className="space-y-12">
+            {visibleTimeline.map((item, index) => (
+              <div key={item.step} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                {/* Date Badge (Desktop Center) */}
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#013220] border-4 border-[#C5A059] z-20 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
                 </div>
-
-                <div className="max-w-4xl mx-auto relative">
-                    {/* Vertical Line */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform md:-translate-x-1/2"></div>
-
-                    <div className="space-y-12">
-                        {visibleTimeline.map((item, index) => (
-                            <div key={item.step} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                                {/* Date Badge (Desktop Center) */}
-                                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#013220] border-4 border-[#C5A059] z-20 flex items-center justify-center">
-                                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                                </div>
-                                {/* Content Card */}
-                                <div className="ml-12 md:ml-0 md:w-1/2 px-4 md:px-12 w-full">
-                                    <div className={`bg-white p-6 rounded-lg shadow-md border-l-4 border-[#C5A059] relative hover:shadow-xl transition-shadow`}>
-                                        <h3 className="text-lg font-bold text-[#013220] mb-2">{item.title}</h3>
-                                        <p className="text-gray-800 text-sm leading-relaxed text-justify">{item.text}</p>
-                                    </div>
-                                </div>
-                                {/* Spacer for opposite side */}
-                                <div className="md:w-1/2"></div>
-                            </div>
-                        ))}
-                    </div>
+                {/* Content Card */}
+                <div className="ml-12 md:ml-0 md:w-1/2 px-4 md:px-12 w-full">
+                  <div className={`bg-white p-6 rounded-lg shadow-md border-l-4 border-[#C5A059] relative hover:shadow-xl transition-shadow`}>
+                    <h3 className="text-lg font-bold text-[#013220] mb-2">{item.title}</h3>
+                    <p className="text-gray-800 text-sm leading-relaxed text-justify">{item.text}</p>
+                  </div>
                 </div>
-            </div>
-        </section>
-    );
+                {/* Spacer for opposite side */}
+                <div className="md:w-1/2"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 const TransformationSection = () => {
-    const { intro, data } = CONTENT.home.transformation;
+  const { intro, data } = CONTENT.home.transformation;
 
-    return (
-        <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-                <div className="text-center max-w-4xl mx-auto mb-12">
-                    <SectionTitle>ATU’s Remarkable Transformation</SectionTitle>
-                    <p className="text-gray-600 max-w-2xl mx-auto text-justify">{intro}</p>
-                </div>
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="text-center max-w-4xl mx-auto mb-12">
+          <SectionTitle>ATU’s Remarkable Transformation</SectionTitle>
+          <p className="text-gray-600 max-w-3xl mx-auto text-center">
+            {intro}
+          </p>
+        </div>
 
-                <div className="bg-white rounded-xl shadow-2xl overflow-hidden border-t-8 border-[#C5A059]">
-                    {/* Header Row */}
-                    <div className="hidden md:grid grid-cols-12 bg-[#013220] text-white py-5 px-8 font-bold uppercase text-xs tracking-wider">
-                        <div className="col-span-6">Key Indicator</div>
-                        <div className="col-span-3 text-center opacity-60">2012</div>
-                        <div className="col-span-3 text-center text-[#C5A059]">2024 Status</div>
-                    </div>
+        <div className="bg-white rounded-xl shadow-2xl overflow-hidden border-t-8 border-[#C5A059]">
+          {/* Header Row */}
+          <div className="hidden md:grid grid-cols-12 bg-[#013220] text-white py-5 px-8 font-bold uppercase text-xs tracking-wider">
+            <div className="col-span-6">Key Indicator</div>
+            <div className="col-span-3 text-center opacity-60">2012</div>
+            <div className="col-span-3 text-center text-[#C5A059]">2024 Status</div>
+          </div>
 
-                    {/* Data Rows */}
-                    {data.map((row, idx) => (
-                        <div 
-                            key={row.id} 
-                            className={`
+          {/* Data Rows */}
+          {data.map((row, idx) => (
+            <div
+              key={row.id}
+              className={`
                                 group relative flex flex-col md:grid md:grid-cols-12 md:items-center 
                                 py-5 px-8 border-b border-gray-100 transition-all duration-300
                                 ${idx % 2 === 0 ? 'bg-white' : 'bg-[#F4F7F6]/50'}
                                 hover:bg-white hover:shadow-lg hover:border-l-4 hover:border-l-[#C5A059]
                             `}
-                        >
-                            {/* Indicator */}
-                            <div className="col-span-6 mb-2 md:mb-0">
-                                <h4 className="font-medium text-gray-800 text-sm md:text-base group-hover:text-[#013220] transition-colors">
-                                    {row.indicator}
-                                </h4>
-                            </div>
+            >
+              {/* Indicator */}
+              <div className="col-span-6 mb-2 md:mb-0">
+                <h4 className="font-medium text-gray-800 text-sm md:text-base group-hover:text-[#013220] transition-colors">
+                  {row.indicator}
+                </h4>
+              </div>
 
-                            {/* 2012 Value */}
-                            <div className="col-span-3 flex md:justify-center items-center gap-2 md:gap-0 mb-1 md:mb-0">
-                                <span className="md:hidden text-xs font-bold text-gray-400 uppercase w-16">2012:</span>
-                                <span className="text-sm font-mono text-gray-400">{row.val_2012}</span>
-                            </div>
+              {/* 2012 Value */}
+              <div className="col-span-3 flex md:justify-center items-center gap-2 md:gap-0 mb-1 md:mb-0">
+                <span className="md:hidden text-xs font-bold text-gray-400 uppercase w-16">2012:</span>
+                <span className="text-sm font-mono text-gray-400">{row.val_2012}</span>
+              </div>
 
-                            {/* 2024 Value */}
-                            <div className="col-span-3 flex md:justify-center items-center gap-2 md:gap-0">
-                                <span className="md:hidden text-xs font-bold text-[#C5A059] uppercase w-16">2024:</span>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-sm md:text-base font-bold text-[#013220] font-mono group-hover:text-[#C5A059] transition-colors">
-                                        {row.val_2024}
-                                    </span>
-                                    <TrendingUp size={16} className="text-[#C5A059] opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+              {/* 2024 Value */}
+              <div className="col-span-3 flex md:justify-center items-center gap-2 md:gap-0">
+                <span className="md:hidden text-xs font-bold text-[#C5A059] uppercase w-16">2024:</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm md:text-base font-bold text-[#013220] font-mono group-hover:text-[#C5A059] transition-colors">
+                    {row.val_2024}
+                  </span>
+                  <TrendingUp size={16} className="text-[#C5A059] opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
                 </div>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+const TestimonialsSection = () => {
+  const t = CONTENT.home.background.testimonials;
+
+  return (
+    <section className="py-20 bg-[#013220]/95 text-white relative overflow-hidden">
+      {/* Subtle gold speckle pattern (matches stats section vibe) */}
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#C5A059 1px, transparent 1px)",
+          backgroundSize: "22px 22px"
+        }}
+      ></div>
+
+      {/* Soft vignette */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/10 via-transparent to-black/25"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+            {t.section_title}
+          </h2>
+
+          <div className="mt-4 flex items-center justify-center">
+            <span className="h-[2px] w-10 bg-[#C5A059]"></span>
+            <span className="mx-3 text-xs md:text-sm uppercase tracking-[0.35em] text-white/70">
+              {t.section_subtitle}
+            </span>
+            <span className="h-[2px] w-10 bg-[#C5A059]"></span>
+          </div>
+
+          <a
+            href={t.profile_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl border border-white/25 bg-white/5 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white hover:bg-white/10 hover:border-[#C5A059] hover:text-[#C5A059] transition"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#C5A059]"></span>
+            {t.source_label} — {t.cta_label}
+          </a>
+        </div>
+
+        {/* Masonry columns (mobile-friendly) */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+          {t.items.map((item, idx) => (
+            <div key={idx} className="mb-6 break-inside-avoid">
+              <div
+                data-reveal
+                className="reveal bg-white/10 backdrop-blur-md rounded-2xl border border-white/18 shadow-2xl overflow-hidden hover:bg-white/12 transition"
+              >
+                {/* Gold micro top line */}
+                <div className="h-[3px] w-full bg-[#C5A059] opacity-80"></div>
+
+                <div className="p-6">
+                  {/* Quote mark */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="text-[#C5A059] opacity-80">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.17 6A5.98 5.98 0 0 0 2 12c0 3.31 2.69 6 6 6h1v-6H6.5A2.5 2.5 0 0 1 9 9.5V6H7.17Zm12 0A5.98 5.98 0 0 0 14 12c0 3.31 2.69 6 6 6h1v-6h-2.5A2.5 2.5 0 0 1 21 9.5V6h-1.83Z" />
+                      </svg>
+                    </div>
+
+                    {/* Country chip */}
+                    <div className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-white/80 bg-white/10 border border-white/15 px-3 py-1.5 rounded-full">
+                      <span className="text-base leading-none">{item.flag}</span>
+                      <span>{item.country}</span>
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-sm md:text-[15px] leading-relaxed text-white/85 text-justify">
+                    {item.text}
+                  </p>
+
+                  <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-4">
+                    {/* LinkedIn bubble */}
+                    <div className="w-12 h-12 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shrink-0 shadow-lg">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                        <path d="M20.447 20.452H17.21V14.86c0-1.334-.027-3.051-1.86-3.051-1.86 0-2.144 1.45-2.144 2.95v5.693H9.07V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.286 0 3.89 2.164 3.89 4.977v6.597zM5.337 7.433c-1.004 0-1.816-.814-1.816-1.817 0-1.003.812-1.816 1.816-1.816 1.003 0 1.816.813 1.816 1.816 0 1.003-.813 1.817-1.816 1.817zM6.956 20.452H3.72V9h3.237v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z" />
+                      </svg>
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-sm text-white">
+                        {t.source_label}
+                      </div>
+                      <div className="text-xs text-white/70 italic truncate">
+                        {t.profile_url}
+                      </div>
+                    </div>
+
+                    <a
+                      href={t.profile_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold uppercase tracking-widest text-[#C5A059] hover:text-white transition"
+                    >
+                      View
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
 };
 
 /* --- PAGE COMPONENTS --- */
@@ -798,6 +1193,26 @@ const TransformationSection = () => {
 const HomePage = ({ onNavigate }) => {
   const [showVideo, setShowVideo] = useState(false);
   const [videoSrc, setVideoSrc] = useState("");
+
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (!els.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!showVideo) {
@@ -842,7 +1257,7 @@ const HomePage = ({ onNavigate }) => {
               {CONTENT.home.hero.tagline}
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <button onClick={() => document.getElementById('contact').scrollIntoView({behavior: 'smooth'})} className="bg-[#C5A059] text-[#013220] px-8 py-3 rounded-sm font-bold shadow-lg hover:bg-[#b08d4b] transition">
+              <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-[#C5A059] text-[#013220] px-8 py-3 rounded-sm font-bold shadow-lg hover:bg-[#b08d4b] transition">
                 {CONTENT.home.hero.cta_primary}
               </button>
               <button onClick={() => setShowVideo(true)} className="flex items-center gap-2 border-2 border-[#C5A059] text-[#C5A059] px-8 py-3 rounded-sm font-bold hover:bg-[#C5A059] hover:text-[#013220] transition group">
@@ -850,16 +1265,16 @@ const HomePage = ({ onNavigate }) => {
               </button>
             </div>
             <button onClick={() => onNavigate('cv')} className="text-xs text-gray-400 uppercase tracking-widest hover:text-white underline decoration-[#C5A059] underline-offset-4">
-               {CONTENT.home.hero.cta_secondary}
+              {CONTENT.home.hero.cta_secondary}
             </button>
           </div>
           <div className="relative z-10 lg:h-[600px] flex justify-center items-end">
-             {/* Abstract shape behind image */}
-             <div className="absolute inset-0 bg-[#C5A059]/10 rounded-full blur-3xl transform translate-y-20"></div>
-             {/* Fallback image logic handled by CSS or generic placeholder if needed, using provided GDrive link directly */}
-             <img 
-              src={CONTENT.home.hero.image} 
-              alt="Eng. Mwale" 
+            {/* Abstract shape behind image */}
+            <div className="absolute inset-0 bg-[#C5A059]/10 rounded-full blur-3xl transform translate-y-20"></div>
+            {/* Fallback image logic handled by CSS or generic placeholder if needed, using provided GDrive link directly */}
+            <img
+              src={CONTENT.home.hero.image}
+              alt="Eng. Mwale"
               className="relative w-full max-w-md object-cover rounded-lg shadow-2xl border-b-8 border-[#C5A059]"
               onError={(e) => {
                 e.target.onerror = null;
@@ -892,17 +1307,17 @@ const HomePage = ({ onNavigate }) => {
       {/* Anchors (Vision) */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-                <SectionTitle>My Candidature Anchors</SectionTitle>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                {CONTENT.home.anchors.map((anchor, idx) => (
-                    <div key={idx} className="group relative p-4 border border-gray-100 hover:border-[#C5A059] bg-white shadow-sm hover:shadow-xl transition duration-300 text-center flex items-center justify-center aspect-square rounded-sm">
-                        <div className="absolute inset-0 bg-[#013220] opacity-0 group-hover:opacity-5 transition"></div>
-                        <span className="font-bold text-[#013220] text-xs md:text-sm tracking-wider">{anchor}</span>
-                    </div>
-                ))}
-            </div>
+          <div className="text-center mb-16">
+            <SectionTitle>My Candidature Anchors</SectionTitle>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            {CONTENT.home.anchors.map((anchor, idx) => (
+              <div key={idx} className="group relative p-4 border border-gray-100 hover:border-[#C5A059] bg-white shadow-sm hover:shadow-xl transition duration-300 text-center flex items-center justify-center aspect-square rounded-sm">
+                <div className="absolute inset-0 bg-[#013220] opacity-0 group-hover:opacity-5 transition"></div>
+                <span className="font-bold text-[#013220] text-xs md:text-sm tracking-wider">{anchor}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -911,28 +1326,37 @@ const HomePage = ({ onNavigate }) => {
 
       {/* Stats Dashboard - UPDATED */}
       <section className="py-20 bg-[#013220] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(#C5A059 1px, transparent 1px)', backgroundSize: '20px 20px'}}></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C5A059 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
         <div className="container mx-auto px-6 relative z-10">
-            <div className="mb-12">
-                <h2 className="text-3xl font-bold mb-2">Transformative Statistics</h2>
-                <p className="text-[#C5A059]">Measuring the real transformation. Numbers don't lie.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {CONTENT.home.stats.slice(0, 8).map((stat, idx) => (
-                    <div key={idx} className="bg-white/5 backdrop-blur-md p-6 border-l-2 border-[#C5A059]">
-                        <div className="text-4xl font-bold text-[#C5A059] mb-2">
-                            <CountUp end={parseFloat(stat.value)} suffix={stat.suffix} />
-                        </div>
-                        <div className="font-bold text-sm uppercase tracking-wide mb-2">{stat.label}</div>
-                        <p className="text-xs text-gray-400">{stat.desc}</p>
-                    </div>
-                ))}
-            </div>
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-2">Transformative Statistics</h2>
+            <p className="text-[#C5A059]">Measuring the real transformation. Numbers don't lie.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {CONTENT.home.stats.slice(0, 8).map((stat, idx) => (
+              <div key={idx} className="bg-white/5 backdrop-blur-md p-6 border-l-2 border-[#C5A059]">
+                <div className="text-4xl font-bold text-[#C5A059] mb-2">
+                  <CountUp end={parseFloat(stat.value)} suffix={stat.suffix} />
+                </div>
+                <div className="font-bold text-sm uppercase tracking-wide mb-2">{stat.label}</div>
+                <p className="text-xs text-gray-400">{stat.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Priorities Section */}
       <PrioritiesSection />
+
+      {/* Gold separator */}
+      <div className="flex justify-center bg-[#F4F7F6]">
+        <div className="h-px w-32 bg-[#C5A059] opacity-70"></div>
+      </div>
+
+      <SixReasonsSection />
+
+      <SignatureQuoteSection />
 
       {/* Milestones Section - UPDATED */}
       <MilestonesSection />
@@ -940,64 +1364,54 @@ const HomePage = ({ onNavigate }) => {
       {/* Dossier / Library */}
       <section className="py-20 bg-[#F4F7F6]">
         <div className="container mx-auto px-6">
-            <div className="flex justify-between items-end mb-12">
-                <SectionTitle>{CONTENT.home.dossier.section_title}</SectionTitle>
-                <button onClick={() => onNavigate('cv')} className="hidden md:flex items-center text-[#013220] font-bold hover:underline">
-                    View Full CV <ChevronRight size={16} />
-                </button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {CONTENT.home.dossier.documents.map((item, idx) => (
-                    <a
-                      key={item.id}
-                      href={item.disabled ? undefined : item.url}
-                      target={item.disabled ? undefined : "_blank"}
-                      rel={item.disabled ? undefined : "noopener noreferrer"}
-                      className={`bg-white p-8 rounded shadow hover:shadow-lg transition group border border-transparent hover:border-[#C5A059] ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-                      onClick={(e) => { if (item.disabled) e.preventDefault(); }}
-                    >
-                        <div className="text-[#C5A059] mb-4 group-hover:scale-110 transition duration-300">
-                             {item.id === 'doc_brochure' ? <Globe /> : item.id === 'doc_cv' ? <FileText /> : <Award />}
-                        </div>
-                        <div className="text-xs font-bold text-[#C5A059] uppercase tracking-wide mb-1">{item.category}</div>
-                        <h3 className="text-xl font-bold text-[#013220] mb-2">{item.title}</h3>
-                        <p className="text-sm text-gray-500 mb-6">{item.subtitle}</p>
-                        <div className="flex items-center text-xs font-bold uppercase tracking-widest text-[#013220]">
-                            {item.disabled ? 'Coming soon' : `Open ${item.file_type}`} <Download size={14} className="ml-2" />
-                        </div>
-                    </a>
-                ))}
-            </div>
+          <div className="flex justify-between items-end mb-12">
+            <SectionTitle>{CONTENT.home.dossier.section_title}</SectionTitle>
+            <button onClick={() => onNavigate('cv')} className="hidden md:flex items-center text-[#013220] font-bold hover:underline">
+              View Full CV <ChevronRight size={16} />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {CONTENT.home.dossier.documents.map((item, idx) => (
+              <a
+                key={item.id}
+                href={item.disabled ? undefined : item.url}
+                target={item.disabled ? undefined : "_blank"}
+                rel={item.disabled ? undefined : "noopener noreferrer"}
+                className={`bg-white p-8 rounded shadow hover:shadow-lg transition group border border-transparent hover:border-[#C5A059] ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                onClick={(e) => { if (item.disabled) e.preventDefault(); }}
+              >
+                <div className="text-[#C5A059] mb-4 group-hover:scale-110 transition duration-300">
+                  {item.id === 'doc_brochure' ? <Globe /> : item.id === 'doc_cv' ? <FileText /> : <Award />}
+                </div>
+                <div className="text-xs font-bold text-[#C5A059] uppercase tracking-wide mb-1">{item.category}</div>
+                <h3 className="text-xl font-bold text-[#013220] mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-500 mb-6">{item.subtitle}</p>
+                <div className="flex items-center text-xs font-bold uppercase tracking-widest text-[#013220]">
+                  {item.disabled ? 'Coming soon' : `Open ${item.file_type}`} <Download size={14} className="ml-2" />
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Quotes */}
-      <section className="py-20 bg-white border-y border-gray-100">
-        <div className="container mx-auto px-6">
-            <h2 className="text-center text-2xl font-serif italic text-gray-400 mb-12">What people are saying</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {CONTENT.home.background.quotes.map((quote, idx) => (
-                    <div key={idx} className="bg-gray-50 p-6 rounded-tl-3xl rounded-br-3xl">
-                        <p className="text-gray-700 italic mb-4 font-serif text-justify">"{quote.text}"</p>
-                        <div className="font-bold text-xs text-[#013220] uppercase">{quote.author}</div>
-                    </div>
-                ))}
-            </div>
-            <div className="flex justify-center gap-8 mt-16 opacity-40 grayscale">
-                 {/* Mock Logos for Diplomatic Validation */}
-                 <div className="h-8 w-24 bg-gray-300 rounded"></div>
-                 <div className="h-8 w-24 bg-gray-300 rounded"></div>
-                 <div className="h-8 w-24 bg-gray-300 rounded"></div>
-                 <div className="h-8 w-24 bg-gray-300 rounded"></div>
-            </div>
-        </div>
-      </section>
+      <TestimonialsSection />
+      {/* Gold separator */}
+      <div className="flex justify-center bg-[#F4F7F6]">
+        <div className="h-px w-32 bg-[#C5A059] opacity-70"></div>
+      </div>
 
       {/* Invitation CTA */}
-      <section className="py-20 bg-[#F4F7F6] border-t border-gray-200">
+      <section className="py-24 bg-[#F6F4EF] border-t border-gray-200 text-[#013220]">
         <div className="container mx-auto px-6 max-w-3xl text-center">
-          <div className="bg-white p-10 rounded-lg shadow-lg border-t-4 border-[#C5A059]">
-            <p className="text-lg text-[#013220] mb-6 font-serif italic text-justify">
+          <div
+            data-reveal
+            className="reveal bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-[#013220]/10"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 uppercase tracking-widest text-center text-[#013220]">
+              A Call for Continental Leadership
+            </h3>
+            <p className="text-base md:text-lg text-gray-700 mb-6 font-serif italic text-justify leading-relaxed">
               {CONTENT.home.background.invitation_cta.text}
             </p>
             <div className="font-bold text-[#C5A059] text-xl mb-2">{CONTENT.home.background.invitation_cta.closing_line}</div>
@@ -1005,10 +1419,10 @@ const HomePage = ({ onNavigate }) => {
               href={CONTENT.home.background.invitation_cta.linkedin_support.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-6 bg-[#0A66C2] text-white px-6 py-3 font-bold rounded-sm hover:bg-[#004182] transition uppercase tracking-widest text-xs"
+              className="inline-flex items-center gap-2 mt-6 px-6 py-3 font-bold rounded-xl transition uppercase tracking-widest text-xs border border-[#013220]/20 text-[#013220] bg-white hover:bg-[#013220] hover:text-white hover:border-[#013220] hover:shadow-lg"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M20.447 20.452H17.21V14.86c0-1.334-.027-3.051-1.86-3.051-1.86 0-2.144 1.45-2.144 2.95v5.693H9.07V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.286 0 3.89 2.164 3.89 4.977v6.597zM5.337 7.433c-1.004 0-1.816-.814-1.816-1.817 0-1.003.812-1.816 1.816-1.816 1.003 0 1.816.813 1.816 1.816 0 1.003-.813 1.817-1.816 1.817zM6.956 20.452H3.72V9h3.237v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+                <path d="M20.447 20.452H17.21V14.86c0-1.334-.027-3.051-1.86-3.051-1.86 0-2.144 1.45-2.144 2.95v5.693H9.07V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.286 0 3.89 2.164 3.89 4.977v6.597zM5.337 7.433c-1.004 0-1.816-.814-1.816-1.817 0-1.003.812-1.816 1.816-1.816 1.003 0 1.816.813 1.816 1.816 0 1.003-.813 1.817-1.816 1.817zM6.956 20.452H3.72V9h3.237v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z" />
               </svg>
               {CONTENT.home.background.invitation_cta.linkedin_support.label}
             </a>
@@ -1017,27 +1431,262 @@ const HomePage = ({ onNavigate }) => {
       </section>
 
       {/* Contact CTA */}
-      <section id="contact" className="py-20 bg-[#013220] text-white">
-         <div className="container mx-auto px-6">
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                 <div>
-                     <h2 className="text-3xl font-bold mb-4">Engage with the Candidature Coordination Office</h2>
-                     <p className="text-gray-300 mb-8 max-w-md">For high-level consultations, media inquiries, or official dossier requests, please use our secure diplomatic channel.</p>
-                     <ul className="space-y-4">
-                         <li className="flex items-center gap-4">
-                             <div className="bg-[#C5A059] p-2 rounded-full text-[#013220]"><Mail size={16} /></div>
-                             <span>campaign@kezias4atusg.africa</span>
-                         </li>
-                         <li className="flex items-center gap-4">
-                             <div className="bg-[#C5A059] p-2 rounded-full text-[#013220]"><Globe size={16} /></div>
-                             <span>Nairobi, Kenya (HQ)</span>
-                         </li>
-                     </ul>
-                 </div>
-                 <ContactForm config={CONTENT.home.contact_form} />
-             </div>
-         </div>
+      <section id="contact" className="py-20 bg-[#0E2A1F] text-white relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(#C5A059 1px, transparent 1px)",
+            backgroundSize: "24px 24px"
+          }}
+        ></div>
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Engage with the Candidature Coordination Office</h2>
+              <p className="text-gray-300 mb-8 max-w-md">For high-level consultations, media inquiries, or official dossier requests, please use our secure diplomatic channel.</p>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-4">
+                  <div className="bg-[#C5A059] p-2 rounded-full text-[#013220]"><Mail size={16} /></div>
+                  <span>campaign@kezias4atusg.africa</span>
+                </li>
+                <li className="flex items-center gap-4">
+                  <div className="bg-[#C5A059] p-2 rounded-full text-[#013220]"><Globe size={16} /></div>
+                  <span>Nairobi, Kenya (HQ)</span>
+                </li>
+              </ul>
+            </div>
+            <ContactForm config={CONTENT.home.contact_form} />
+          </div>
+        </div>
       </section>
+    </div>
+  );
+};
+
+const GalleryPage = () => {
+  const g = CONTENT.gallery;
+
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [lightbox, setLightbox] = useState(null);
+  const [showUploadPanel, setShowUploadPanel] = useState(false);
+
+  // Local preview generator (does not upload or persist files)
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const previews = selectedFiles.map((f) => ({
+    name: f.name,
+    url: URL.createObjectURL(f)
+  }));
+
+  useEffect(() => {
+    return () => {
+      previews.forEach((p) => URL.revokeObjectURL(p.url));
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedFiles]);
+
+  const filteredItems =
+    activeCategory === "All"
+      ? g.items
+      : g.items.filter((it) => it.category === activeCategory);
+
+  const generatedJson = previews.map((p, idx) => ({
+    id: `g${Date.now()}_${idx}`,
+    src: `/gallery/${p.name}`,
+    title: "Title here",
+    caption: "Caption here (event / location / date).",
+    category: "Media",
+    date: new Date().getFullYear().toString()
+  }));
+
+  return (
+    <div className="pt-32 pb-20 animate-fade-in bg-[#F4F7F6]">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-12 max-w-4xl mx-auto">
+          <SectionTitle>{g.page_title}</SectionTitle>
+          <p className="text-[#C5A059] font-bold tracking-widest uppercase text-sm">
+            {g.page_subtitle}
+          </p>
+        </div>
+
+        {/* Upload / How-to (Accordion) */}
+        <section className="mb-14">
+          <div className="bg-[#F6F4EF] border border-[#013220]/10 rounded-2xl shadow-sm max-w-5xl mx-auto overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setShowUploadPanel((v) => !v)}
+              className="w-full flex items-center justify-between gap-4 px-6 md:px-10 py-6 text-left"
+            >
+              <div>
+                <div className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  Admin / Upload
+                </div>
+                <h3 className="mt-2 text-xl md:text-2xl font-extrabold text-[#013220] tracking-tight">
+                  {g.upload_help_title}
+                </h3>
+                <div className="mt-3 h-[2px] w-16 bg-[#C5A059] opacity-80"></div>
+              </div>
+
+              <span
+                className={[
+                  "inline-flex items-center justify-center rounded-full w-10 h-10 border transition",
+                  showUploadPanel
+                    ? "bg-[#013220] text-white border-[#013220] ring-1 ring-[#C5A059]/40"
+                    : "bg-white/60 text-[#013220] border-[#013220]/10 hover:border-[#C5A059]/60"
+                ].join(" ")}
+                aria-label="Toggle upload panel"
+              >
+                {showUploadPanel ? "–" : "+"}
+              </span>
+            </button>
+
+            {showUploadPanel ? (
+              <div className="px-6 md:px-10 pb-10">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                  <div className="md:col-span-7 text-left">
+                    <ul className="mt-2 space-y-2 text-sm text-gray-700">
+                      {g.upload_help_steps.map((s, i) => (
+                        <li key={i} className="leading-relaxed">
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="md:col-span-5">
+                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-600 mb-2">
+                      Select images (preview + JSON generator)
+                    </label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(e) => setSelectedFiles(Array.from(e.target.files || []))}
+                      className="block w-full text-sm text-gray-700 file:mr-4 file:py-3 file:px-5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-widest file:bg-[#013220] file:text-white hover:file:bg-[#0E2A1F] cursor-pointer"
+                    />
+                    <p className="mt-2 text-xs text-gray-500">
+                      This does not upload to a server. It generates the content list.
+                    </p>
+                  </div>
+                </div>
+
+                {previews.length > 0 ? (
+                  <div className="mt-8">
+                    <div className="text-xs font-bold uppercase tracking-widest text-gray-600">
+                      JSON snippet (paste into CONTENT.gallery.items)
+                    </div>
+                    <pre className="mt-4 text-left text-xs md:text-sm bg-black/90 text-white/90 rounded-2xl p-4 md:p-5 overflow-x-auto border border-white/10">
+                      <code>{JSON.stringify(generatedJson, null, 2)}</code>
+                    </pre>
+
+                    <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {previews.map((p) => (
+                        <div key={p.name} className="rounded-xl overflow-hidden border border-black/5 bg-white">
+                          <img src={p.url} alt={p.name} className="w-full h-32 object-cover" />
+                          <div className="p-3 text-[11px] uppercase tracking-widest text-gray-600 truncate">
+                            {p.name}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        </section>
+        
+        {/* Filters */}
+        <section className="mb-10">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {g.categories.map((c) => {
+              const active = c === activeCategory;
+              return (
+                <button
+                  key={c}
+                  onClick={() => setActiveCategory(c)}
+                  className={[
+                    "px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition border",
+                    active
+                      ? "bg-[#013220] text-white border-[#013220]"
+                      : "bg-white text-[#013220] border-[#013220]/15 hover:border-[#C5A059] hover:text-[#C5A059]"
+                  ].join(" ")}
+                >
+                  {c}
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Grid */}
+        <section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 max-w-6xl mx-auto">
+            {filteredItems.map((it) => (
+              <button
+                key={it.id}
+                onClick={() => setLightbox(it)}
+                className="text-left group bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition"
+              >
+                <div className="relative">
+                  <div className="h-[3px] w-full bg-[#C5A059] opacity-80"></div>
+                  <img
+                    src={it.src}
+                    alt={it.title}
+                    className="w-full h-56 object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 left-4 text-[11px] uppercase tracking-widest bg-black/40 text-white px-3 py-1 rounded-full border border-white/20 backdrop-blur">
+                    {it.category}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-lg font-extrabold text-[#013220] tracking-tight group-hover:text-[#C5A059] transition">
+                    {it.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-gray-700 leading-relaxed text-justify">
+                    {it.caption}
+                  </p>
+                  <div className="mt-5 pt-4 border-t border-black/5 flex items-center justify-between">
+                    <span className="text-[11px] uppercase tracking-widest text-gray-500">
+                      {it.date}
+                    </span>
+                    <span className="text-[11px] uppercase tracking-widest text-[#C5A059] font-bold">
+                      View
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* Lightbox */}
+      <Modal isOpen={!!lightbox} onClose={() => setLightbox(null)}>
+        {lightbox ? (
+          <div className="bg-black">
+            <div className="w-full max-h-[70vh]">
+              <img
+                src={lightbox.src}
+                alt={lightbox.title}
+                className="w-full max-h-[70vh] object-contain bg-black"
+              />
+            </div>
+            <div className="bg-white p-6">
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                {lightbox.category} • {lightbox.date}
+              </div>
+              <div className="mt-2 text-xl font-extrabold text-[#013220]">
+                {lightbox.title}
+              </div>
+              <p className="mt-3 text-gray-700 leading-relaxed text-justify">
+                {lightbox.caption}
+              </p>
+            </div>
+          </div>
+        ) : null}
+      </Modal>
     </div>
   );
 };
@@ -1045,68 +1694,92 @@ const HomePage = ({ onNavigate }) => {
 const CVPage = () => (
   <div className="pt-32 pb-20 container mx-auto px-6 animate-fade-in">
     <div className="max-w-4xl mx-auto">
-        <SectionTitle dark={false}>Curriculum Vitae</SectionTitle>
-        
-        {/* Profile */}
-        <div className="bg-white p-8 rounded-lg shadow-sm mb-12 border-t-4 border-[#013220]">
-            <h3 className="text-xl font-bold text-[#013220] mb-6 flex items-center gap-2">
-                <Users className="text-[#C5A059]" /> Profile in Brief
-            </h3>
-            <div className="prose prose-lg text-gray-700 whitespace-pre-line text-sm leading-relaxed text-justify mb-4 font-bold text-[#013220]">
-               {CONTENT.home.background.profile_summary}
-            </div>
-            <div className="prose prose-lg text-gray-700 whitespace-pre-line text-sm leading-relaxed text-justify">
-                {CONTENT.cv.profile}
-            </div>
-        </div>
+      <SectionTitle>Curriculum Vitae</SectionTitle>
 
-        {/* Qualifications */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold text-[#013220] mb-6 flex items-center gap-2">
-                    <Award className="text-[#C5A059]" /> Qualifications
-                </h3>
-                <ul className="space-y-6">
-                    {CONTENT.cv.degrees.map((deg, idx) => (
-                        <li key={idx} className="border-l-2 border-gray-200 pl-4">
-                            <div className="text-[#C5A059] font-bold text-sm">{deg.year}</div>
-                            <div className="font-bold text-[#013220]">{deg.title}</div>
-                            <div className="text-xs text-gray-500 uppercase">{deg.inst}</div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-                 <h3 className="text-xl font-bold text-[#013220] mb-6 flex items-center gap-2">
-                    <Briefcase className="text-[#C5A059]" /> Career Ladder
-                </h3>
-                <ul className="space-y-6">
-                    {CONTENT.cv.career.map((job, idx) => (
-                        <li key={idx} className="flex gap-4 items-start">
-                             <div className="min-w-[80px] text-xs font-bold text-[#C5A059] bg-[#013220]/5 py-1 px-2 rounded">{job.period}</div>
-                             <div className="text-sm font-medium text-gray-800">{job.role}</div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+      {/* Profile */}
+      <div className="bg-white p-8 rounded-lg shadow-sm mb-12 border-t-4 border-[#013220]">
+        <h3 className="text-xl font-bold text-[#013220] mb-6 flex items-center gap-2">
+          <Users className="text-[#C5A059]" /> Profile in Brief
+        </h3>
+        <div className="prose prose-lg text-gray-700 whitespace-pre-line text-sm leading-relaxed text-justify mb-4 font-bold text-[#013220]">
+          {CONTENT.home.background.profile_summary}
         </div>
+        <div className="prose prose-lg text-gray-700 whitespace-pre-line text-sm leading-relaxed text-justify">
+          {CONTENT.cv.profile}
+        </div>
+      </div>
 
-        {/* Impact */}
+      {/* Qualifications */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="bg-white p-8 rounded-lg shadow-sm">
-            <h3 className="text-xl font-bold text-[#013220] mb-8">Real, Significant Impact</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {CONTENT.cv.impact.map((item, idx) => (
-                    <div key={idx} className="flex gap-4">
-                        <CheckCircle className="text-[#C5A059] shrink-0" size={20} />
-                        <div>
-                            <span className="font-bold text-[#013220]">{item.title}</span>
-                            <span className="text-gray-600 text-sm block mt-1">{item.desc}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
+          <h3 className="text-xl font-bold text-[#013220] mb-6 flex items-center gap-2">
+            <Award className="text-[#C5A059]" /> Qualifications
+          </h3>
+          <ul className="space-y-6">
+            {CONTENT.cv.degrees.map((deg, idx) => (
+              <li key={idx} className="border-l-2 border-gray-200 pl-4">
+                <div className="text-[#C5A059] font-bold text-sm">{deg.year}</div>
+                <div className="font-bold text-[#013220]">{deg.title}</div>
+                <div className="text-xs text-gray-500 uppercase">{deg.inst}</div>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <div className="bg-white p-8 rounded-lg shadow-sm">
+          <h3 className="text-xl font-bold text-[#013220] mb-6 flex items-center gap-2">
+            <Briefcase className="text-[#C5A059]" /> Career Ladder
+          </h3>
+          <ul className="space-y-6">
+            {CONTENT.cv.career.map((job, idx) => (
+              <li key={idx} className="flex gap-4 items-start">
+                <div className="min-w-[80px] text-xs font-bold text-[#C5A059] bg-[#013220]/5 py-1 px-2 rounded">{job.period}</div>
+                <div className="text-sm font-medium text-gray-800">{job.role}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Impact */}
+      <div className="bg-white p-8 rounded-lg shadow-sm">
+        <h3 className="text-xl font-bold text-[#013220] mb-8">Real, Significant Impact</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {CONTENT.cv.impact.map((item, idx) => (
+            <div key={idx} className="flex gap-4">
+              <CheckCircle className="text-[#C5A059] shrink-0" size={20} />
+              <div>
+                <span className="font-bold text-[#013220]">{item.title}</span>
+                <span className="text-gray-600 text-sm block mt-1">{item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Continental Contributions */}
+      <div className="bg-white p-8 rounded-lg shadow-sm mt-12">
+        <h3 className="text-xl font-bold text-[#013220] mb-6">
+          {CONTENT.cv.continental_contributions.title}
+        </h3>
+
+        <p className="text-gray-600 text-sm leading-relaxed text-justify mb-6">
+          {CONTENT.cv.continental_contributions.intro}
+        </p>
+
+        <p className="text-xs uppercase tracking-widest text-[#C5A059] font-bold mb-6">
+          {CONTENT.cv.continental_contributions.lead_in}
+        </p>
+
+        <ul className="space-y-4">
+          {CONTENT.cv.continental_contributions.items.map((item, idx) => (
+            <li key={idx} className="flex gap-4">
+              <CheckCircle className="text-[#C5A059] shrink-0" size={18} />
+              <span className="text-sm text-gray-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 );
@@ -1114,88 +1787,87 @@ const CVPage = () => (
 const VisionPage = () => (
   <div className="pt-32 pb-20 container mx-auto px-6 animate-fade-in">
     <div className="max-w-3xl mx-auto bg-white p-10 md:p-16 rounded-lg shadow-lg">
-        <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#013220] mb-2">My Commitment & Vision</h2>
-            <div className="h-1 w-24 bg-[#C5A059] mx-auto"></div>
-        </div>
-        <div className="prose prose-lg text-gray-800 text-justify leading-loose whitespace-pre-line font-serif">
-            {CONTENT.vision.intro}
-        </div>
-        <div className="mt-16 p-8 bg-[#F4F7F6] border-l-4 border-[#C5A059] rounded-r-lg">
-            <h3 className="font-bold text-[#013220] mb-4">Invitation for Support</h3>
-            <p className="text-sm text-gray-700 leading-relaxed italic text-justify">
-               "{CONTENT.home.background.invitation_cta.text}"
-            </p>
-             <p className="text-sm text-gray-700 leading-relaxed italic mt-2 font-bold text-justify">
-               {CONTENT.home.background.invitation_cta.closing_line}
-            </p>
-            <div className="mt-4 text-right font-bold text-[#013220] font-sans">© Eng. Kezias Kazuba MWALE</div>
-        </div>
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-[#013220] mb-2">My Commitment & Vision</h2>
+        <div className="h-1 w-24 bg-[#C5A059] mx-auto"></div>
+      </div>
+      <div className="prose prose-lg text-gray-800 text-justify leading-loose whitespace-pre-line font-serif">
+        {CONTENT.vision.intro}
+      </div>
+      <div className="mt-16 p-8 bg-[#F4F7F6] border-l-4 border-[#C5A059] rounded-r-lg">
+        <h3 className="font-bold text-[#013220] mb-4">Invitation for Support</h3>
+        <p className="text-sm text-gray-700 leading-relaxed italic text-justify">
+          "{CONTENT.home.background.invitation_cta.text}"
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed italic mt-2 font-bold text-justify">
+          {CONTENT.home.background.invitation_cta.closing_line}
+        </p>
+        <div className="mt-4 text-right font-bold text-[#013220] font-sans">© Eng. Kezias Kazuba MWALE</div>
+      </div>
     </div>
   </div>
 );
 
 const FocusPage = () => {
-    const [activeTab, setActiveTab] = useState("ms");
-    const activeContent = CONTENT.focus.find(f => f.id === activeTab);
+  const [activeTab, setActiveTab] = useState("ms");
+  const activeContent = CONTENT.focus.find(f => f.id === activeTab);
 
-    return (
-        <div className="pt-32 pb-20 container mx-auto px-6 min-h-screen animate-fade-in">
-            <div className="text-center mb-12">
-                <SectionTitle dark={false}>Stakeholder-Centred Agenda</SectionTitle>
-                <p className="text-gray-300 max-w-2xl mx-auto mt-4">Delivering real, tangible value to all ATU stakeholders.</p>
-            </div>
+  return (
+    <div className="pt-32 pb-20 container mx-auto px-6 min-h-screen animate-fade-in">
+      <div className="text-center mb-12">
+        <SectionTitle>Stakeholder-Centred Agenda</SectionTitle>
+        <p className="text-gray-300 max-w-2xl mx-auto mt-4">Delivering real, tangible value to all ATU stakeholders.</p>
+      </div>
 
-            <div className="flex flex-col lg:flex-row gap-8">
-                {/* Tabs */}
-                <div className="lg:w-1/4">
-                    <div className="bg-white shadow rounded-lg overflow-hidden sticky top-32">
-                        {CONTENT.focus.map((item) => (
-                            <button
-                                key={item.id}
-                                onClick={() => setActiveTab(item.id)}
-                                className={`w-full text-left px-6 py-4 border-b border-gray-100 flex justify-between items-center transition duration-200 ${
-                                    activeTab === item.id 
-                                    ? 'bg-[#013220] text-white font-bold pl-8' 
-                                    : 'text-gray-600 hover:bg-gray-50'
-                                }`}
-                            >
-                                {item.title}
-                                {activeTab === item.id && <ChevronRight size={16} className="text-[#C5A059]" />}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Content */}
-                <div className="lg:w-3/4">
-                    <div className="bg-white p-8 md:p-12 rounded-lg shadow-lg min-h-[500px]">
-                        <div className="flex items-baseline gap-4 mb-6 border-b pb-4">
-                             <h2 className="text-3xl font-bold text-[#013220]">{activeContent.title}</h2>
-                        </div>
-                        
-                        <div className="mb-8 text-lg text-gray-700 leading-relaxed font-light text-justify">
-                            {activeContent.intro}
-                        </div>
-
-                        <div className="bg-[#F4F7F6] p-6 rounded-lg border-t-2 border-[#C5A059]">
-                            <h4 className="font-bold text-[#013220] uppercase tracking-wider mb-4 text-sm flex items-center gap-2">
-                                <Award size={16} /> Under My Leadership
-                            </h4>
-                            <ul className="space-y-4">
-                                {activeContent.points.map((point, idx) => (
-                                    <li key={idx} className="flex gap-3 text-gray-700">
-                                        <div className="mt-1.5 h-2 w-2 rounded-full bg-[#C5A059] shrink-0"></div>
-                                        <span>{point}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Tabs */}
+        <div className="lg:w-1/4">
+          <div className="bg-white shadow rounded-lg overflow-hidden sticky top-32">
+            {CONTENT.focus.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`w-full text-left px-6 py-4 border-b border-gray-100 flex justify-between items-center transition duration-200 ${activeTab === item.id
+                  ? 'bg-[#013220] text-white font-bold pl-8'
+                  : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+              >
+                {item.title}
+                {activeTab === item.id && <ChevronRight size={16} className="text-[#C5A059]" />}
+              </button>
+            ))}
+          </div>
         </div>
-    );
+
+        {/* Content */}
+        <div className="lg:w-3/4">
+          <div className="bg-white p-8 md:p-12 rounded-lg shadow-lg min-h-[500px]">
+            <div className="flex items-baseline gap-4 mb-6 border-b pb-4">
+              <h2 className="text-3xl font-bold text-[#013220]">{activeContent.title}</h2>
+            </div>
+
+            <div className="mb-8 text-lg text-gray-700 leading-relaxed font-light text-justify">
+              {activeContent.intro}
+            </div>
+
+            <div className="bg-[#F4F7F6] p-6 rounded-lg border-t-2 border-[#C5A059]">
+              <h4 className="font-bold text-[#013220] uppercase tracking-wider mb-4 text-sm flex items-center gap-2">
+                <Award size={16} /> Under My Leadership
+              </h4>
+              <ul className="space-y-4">
+                {activeContent.points.map((point, idx) => (
+                  <li key={idx} className="flex gap-3 text-gray-700">
+                    <div className="mt-1.5 h-2 w-2 rounded-full bg-[#C5A059] shrink-0"></div>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 /* --- MAIN LAYOUT --- */
@@ -1212,8 +1884,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-      window.scrollTo(0,0);
-      setMobileMenuOpen(false);
+    window.scrollTo(0, 0);
+    setMobileMenuOpen(false);
   }, [page]);
 
   const navLinks = [
@@ -1226,11 +1898,11 @@ export default function App() {
   return (
     <div className={`min-h-screen ${COLORS.bg} font-sans text-gray-900 selection:bg-[#C5A059] selection:text-white`}>
       <SpectrumBackground />
-      
+
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md py-4' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div 
+          <div
             className="font-bold text-2xl tracking-tighter text-[#013220] cursor-pointer flex flex-col leading-none"
             onClick={() => setPage('home')}
           >
@@ -1241,7 +1913,7 @@ export default function App() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map(link => (
-              <button 
+              <button
                 key={link.id}
                 onClick={() => setPage(link.id)}
                 className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[#C5A059] ${page === link.id ? 'text-[#C5A059]' : (scrolled ? 'text-[#013220]' : 'text-white')}`}
@@ -1249,12 +1921,12 @@ export default function App() {
                 {link.label}
               </button>
             ))}
-            <button 
-                onClick={() => {
-                    if(page !== 'home') setPage('home');
-                    setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100);
-                }} 
-                className="bg-[#C5A059] text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-[#b08d4b] transition"
+            <button
+              onClick={() => {
+                if (page !== 'home') setPage('home');
+                setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+              }}
+              className="bg-[#C5A059] text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-[#b08d4b] transition"
             >
               Contact
             </button>
@@ -1270,7 +1942,7 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex flex-col gap-6 md:hidden border-t">
             {navLinks.map(link => (
-              <button 
+              <button
                 key={link.id}
                 onClick={() => setPage(link.id)}
                 className={`text-left text-lg font-bold uppercase ${page === link.id ? 'text-[#C5A059]' : 'text-[#013220]'}`}
@@ -1278,12 +1950,12 @@ export default function App() {
                 {link.label}
               </button>
             ))}
-             <button 
-                onClick={() => {
-                    if(page !== 'home') setPage('home');
-                    setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100);
-                }} 
-                className="bg-[#013220] text-white px-6 py-3 rounded text-center font-bold"
+            <button
+              onClick={() => {
+                if (page !== 'home') setPage('home');
+                setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+              }}
+              className="bg-[#013220] text-white px-6 py-3 rounded text-center font-bold"
             >
               Contact Office
             </button>
@@ -1297,6 +1969,7 @@ export default function App() {
         {page === 'cv' && <CVPage />}
         {page === 'vision' && <VisionPage />}
         {page === 'focus' && <FocusPage />}
+        {page === "gallery" && <GalleryPage />}
       </main>
 
       {/* Footer */}
@@ -1304,18 +1977,19 @@ export default function App() {
         <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest mb-4">Mwale for ATU SG</h4>
-            <p>Advancing ATU Transformation.<br/>Deepening contribution to Digital Transformation Agendas.</p>
+            <p>Advancing ATU Transformation.<br />Deepening contribution to Digital Transformation Agendas.</p>
           </div>
           <div className="flex flex-col gap-2">
             <h4 className="text-white font-bold uppercase tracking-widest mb-4">Quick Links</h4>
             <button onClick={() => setPage('cv')} className="text-left hover:text-[#C5A059]">Curriculum Vitae</button>
             <button onClick={() => setPage('vision')} className="text-left hover:text-[#C5A059]">Strategic Vision</button>
             <button onClick={() => setPage('focus')} className="text-left hover:text-[#C5A059]">Stakeholder Focus</button>
+            <button onClick={() => setPage('gallery')} className="text-left hover:text-[#C5A059]">Gallery</button>
           </div>
           <div>
-             <h4 className="text-white font-bold uppercase tracking-widest mb-4">Official Hashtag</h4>
-             <span className="text-[#C5A059] text-xl font-bold">#kezias4atusg</span>
-             <p className="mt-4 text-xs">© 2026 Eng. Kezias Kazuba MWALE.<br/>All Rights Reserved.</p>
+            <h4 className="text-white font-bold uppercase tracking-widest mb-4">Official Hashtag</h4>
+            <span className="text-[#C5A059] text-xl font-bold">#kezias4atusg</span>
+            <p className="mt-4 text-xs">© 2026 Eng. Kezias Kazuba MWALE.<br />All Rights Reserved.</p>
           </div>
         </div>
       </footer>
@@ -1334,6 +2008,16 @@ export default function App() {
         }
         .animate-fade-in {
             animation: fadeIn 0.6s ease-out forwards;
+        }
+        .reveal {
+           opacity: 0;
+           transform: translateY(14px);
+           transition: opacity 700ms ease, transform 700ms ease;
+           will-change: opacity, transform;
+        }
+        .reveal-visible {
+           opacity: 1;
+           transform: translateY(0);
         }
       `}</style>
     </div>
