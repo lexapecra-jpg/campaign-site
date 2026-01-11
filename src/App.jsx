@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import mwale1Img from "./assets/mwale1.jpg";
 import mwale2Img from "./assets/mwale2.jpg";
+import GalleryPage from "./pages/GalleryPage";
+import AdminGalleryPage from "./pages/AdminGalleryPage";
 import {
   Menu, X, Download, ChevronRight, Globe,
   Award, Briefcase, Users, Play, FileText,
@@ -1192,7 +1194,7 @@ const TestimonialsSection = () => {
 
 const HomePage = ({ onNavigate }) => {
   const [showVideo, setShowVideo] = useState(false);
-  const [videoSrc, setVideoSrc] = useState("");
+
 
   useEffect(() => {
     const els = Array.from(document.querySelectorAll("[data-reveal]"));
@@ -1214,15 +1216,12 @@ const HomePage = ({ onNavigate }) => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!showVideo) {
-      setVideoSrc("");
-      return;
-    }
+  // --- Derived State for Video ---
+  const getVideoSrc = () => {
+    if (!showVideo) return "";
 
-    // Autoplay only on desktop (and respect reduced-motion preferences)
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isDesktop = typeof window !== 'undefined' ? window.matchMedia("(min-width: 1024px)").matches : false;
+    const prefersReducedMotion = typeof window !== 'undefined' ? window.matchMedia("(prefers-reduced-motion: reduce)").matches : false;
 
     const baseUrl = CONTENT.home.hero.video;
     const joiner = baseUrl.includes("?") ? "&" : "?";
@@ -1234,9 +1233,10 @@ const HomePage = ({ onNavigate }) => {
       modestbranding: "1"
     });
 
-    // Set iframe src only when the modal is open (also enables lazy-load)
-    setVideoSrc(`${baseUrl}${joiner}${params.toString()}`);
-  }, [showVideo]);
+    return `${baseUrl}${joiner}${params.toString()}`;
+  };
+
+  const videoSrc = getVideoSrc();
 
   return (
     <div className="animate-fade-in">
@@ -1371,7 +1371,7 @@ const HomePage = ({ onNavigate }) => {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {CONTENT.home.dossier.documents.map((item, idx) => (
+            {CONTENT.home.dossier.documents.map((item) => (
               <a
                 key={item.id}
                 href={item.disabled ? undefined : item.url}
@@ -1463,233 +1463,7 @@ const HomePage = ({ onNavigate }) => {
   );
 };
 
-const GalleryPage = () => {
-  const g = CONTENT.gallery;
 
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [lightbox, setLightbox] = useState(null);
-  const [showUploadPanel, setShowUploadPanel] = useState(false);
-
-  // Local preview generator (does not upload or persist files)
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const previews = selectedFiles.map((f) => ({
-    name: f.name,
-    url: URL.createObjectURL(f)
-  }));
-
-  useEffect(() => {
-    return () => {
-      previews.forEach((p) => URL.revokeObjectURL(p.url));
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFiles]);
-
-  const filteredItems =
-    activeCategory === "All"
-      ? g.items
-      : g.items.filter((it) => it.category === activeCategory);
-
-  const generatedJson = previews.map((p, idx) => ({
-    id: `g${Date.now()}_${idx}`,
-    src: `/gallery/${p.name}`,
-    title: "Title here",
-    caption: "Caption here (event / location / date).",
-    category: "Media",
-    date: new Date().getFullYear().toString()
-  }));
-
-  return (
-    <div className="pt-32 pb-20 animate-fade-in bg-[#F4F7F6]">
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12 max-w-4xl mx-auto">
-          <SectionTitle>{g.page_title}</SectionTitle>
-          <p className="text-[#C5A059] font-bold tracking-widest uppercase text-sm">
-            {g.page_subtitle}
-          </p>
-        </div>
-
-        {/* Upload / How-to (Accordion) */}
-        <section className="mb-14">
-          <div className="bg-[#F6F4EF] border border-[#013220]/10 rounded-2xl shadow-sm max-w-5xl mx-auto overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setShowUploadPanel((v) => !v)}
-              className="w-full flex items-center justify-between gap-4 px-6 md:px-10 py-6 text-left"
-            >
-              <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                  Admin / Upload
-                </div>
-                <h3 className="mt-2 text-xl md:text-2xl font-extrabold text-[#013220] tracking-tight">
-                  {g.upload_help_title}
-                </h3>
-                <div className="mt-3 h-[2px] w-16 bg-[#C5A059] opacity-80"></div>
-              </div>
-
-              <span
-                className={[
-                  "inline-flex items-center justify-center rounded-full w-10 h-10 border transition",
-                  showUploadPanel
-                    ? "bg-[#013220] text-white border-[#013220] ring-1 ring-[#C5A059]/40"
-                    : "bg-white/60 text-[#013220] border-[#013220]/10 hover:border-[#C5A059]/60"
-                ].join(" ")}
-                aria-label="Toggle upload panel"
-              >
-                {showUploadPanel ? "–" : "+"}
-              </span>
-            </button>
-
-            {showUploadPanel ? (
-              <div className="px-6 md:px-10 pb-10">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                  <div className="md:col-span-7 text-left">
-                    <ul className="mt-2 space-y-2 text-sm text-gray-700">
-                      {g.upload_help_steps.map((s, i) => (
-                        <li key={i} className="leading-relaxed">
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="md:col-span-5">
-                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-600 mb-2">
-                      Select images (preview + JSON generator)
-                    </label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      multiple
-                      onChange={(e) => setSelectedFiles(Array.from(e.target.files || []))}
-                      className="block w-full text-sm text-gray-700 file:mr-4 file:py-3 file:px-5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-widest file:bg-[#013220] file:text-white hover:file:bg-[#0E2A1F] cursor-pointer"
-                    />
-                    <p className="mt-2 text-xs text-gray-500">
-                      This does not upload to a server. It generates the content list.
-                    </p>
-                  </div>
-                </div>
-
-                {previews.length > 0 ? (
-                  <div className="mt-8">
-                    <div className="text-xs font-bold uppercase tracking-widest text-gray-600">
-                      JSON snippet (paste into CONTENT.gallery.items)
-                    </div>
-                    <pre className="mt-4 text-left text-xs md:text-sm bg-black/90 text-white/90 rounded-2xl p-4 md:p-5 overflow-x-auto border border-white/10">
-                      <code>{JSON.stringify(generatedJson, null, 2)}</code>
-                    </pre>
-
-                    <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {previews.map((p) => (
-                        <div key={p.name} className="rounded-xl overflow-hidden border border-black/5 bg-white">
-                          <img src={p.url} alt={p.name} className="w-full h-32 object-cover" />
-                          <div className="p-3 text-[11px] uppercase tracking-widest text-gray-600 truncate">
-                            {p.name}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-          </div>
-        </section>
-        
-        {/* Filters */}
-        <section className="mb-10">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {g.categories.map((c) => {
-              const active = c === activeCategory;
-              return (
-                <button
-                  key={c}
-                  onClick={() => setActiveCategory(c)}
-                  className={[
-                    "px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition border",
-                    active
-                      ? "bg-[#013220] text-white border-[#013220]"
-                      : "bg-white text-[#013220] border-[#013220]/15 hover:border-[#C5A059] hover:text-[#C5A059]"
-                  ].join(" ")}
-                >
-                  {c}
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Grid */}
-        <section>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 max-w-6xl mx-auto">
-            {filteredItems.map((it) => (
-              <button
-                key={it.id}
-                onClick={() => setLightbox(it)}
-                className="text-left group bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition"
-              >
-                <div className="relative">
-                  <div className="h-[3px] w-full bg-[#C5A059] opacity-80"></div>
-                  <img
-                    src={it.src}
-                    alt={it.title}
-                    className="w-full h-56 object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4 text-[11px] uppercase tracking-widest bg-black/40 text-white px-3 py-1 rounded-full border border-white/20 backdrop-blur">
-                    {it.category}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h4 className="text-lg font-extrabold text-[#013220] tracking-tight group-hover:text-[#C5A059] transition">
-                    {it.title}
-                  </h4>
-                  <p className="mt-2 text-sm text-gray-700 leading-relaxed text-justify">
-                    {it.caption}
-                  </p>
-                  <div className="mt-5 pt-4 border-t border-black/5 flex items-center justify-between">
-                    <span className="text-[11px] uppercase tracking-widest text-gray-500">
-                      {it.date}
-                    </span>
-                    <span className="text-[11px] uppercase tracking-widest text-[#C5A059] font-bold">
-                      View
-                    </span>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      {/* Lightbox */}
-      <Modal isOpen={!!lightbox} onClose={() => setLightbox(null)}>
-        {lightbox ? (
-          <div className="bg-black">
-            <div className="w-full max-h-[70vh]">
-              <img
-                src={lightbox.src}
-                alt={lightbox.title}
-                className="w-full max-h-[70vh] object-contain bg-black"
-              />
-            </div>
-            <div className="bg-white p-6">
-              <div className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                {lightbox.category} • {lightbox.date}
-              </div>
-              <div className="mt-2 text-xl font-extrabold text-[#013220]">
-                {lightbox.title}
-              </div>
-              <p className="mt-3 text-gray-700 leading-relaxed text-justify">
-                {lightbox.caption}
-              </p>
-            </div>
-          </div>
-        ) : null}
-      </Modal>
-    </div>
-  );
-};
 
 const CVPage = () => (
   <div className="pt-32 pb-20 container mx-auto px-6 animate-fade-in">
@@ -1877,6 +1651,51 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // --- Admin access (hidden) ---
+  // Visit /#admin-kezias-2026 to open the admin gallery.
+  // Requires a passcode stored in VITE_ADMIN_CODE.
+  const ADMIN_HASH = "#admin-kezias-2026";
+
+  /* --- Navigation Handler --- */
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+    setMobileMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
+
+  // Track prompt state to prevent double-firing in StrictMode
+  const promptActive = useRef(false);
+
+  const openAdminIfAuthorized = () => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== ADMIN_HASH) return;
+    if (promptActive.current) return; // Prevent double prompt
+
+    const expected = import.meta.env.VITE_ADMIN_CODE;
+
+    // If no code configured, do NOT allow access
+    if (!expected) {
+      window.location.hash = "";
+      handlePageChange("home");
+      return;
+    }
+
+    promptActive.current = true;
+
+    // Wrap prompt in timeout to let hash update first and avoid sync-in-effect warning
+    setTimeout(() => {
+      const ok = window.prompt("Admin access code:");
+      promptActive.current = false; // Reset lock
+
+      if (ok === expected) {
+        handlePageChange("admin_gallery");
+      } else {
+        window.location.hash = "";
+        handlePageChange("home");
+      }
+    }, 50);
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -1884,29 +1703,38 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setMobileMenuOpen(false);
-  }, [page]);
+    // Initial check
+    openAdminIfAuthorized();
+
+    const onHashChange = () => openAdminIfAuthorized();
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only run on mount, plus the listener handles future changes
 
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'cv', label: 'CV' },
     { id: 'vision', label: 'Vision' },
     { id: 'focus', label: 'Focus Areas' },
+    { id: 'gallery', label: 'Gallery' },
   ];
+
+  // Determine if nav should be solid (scrolled or not on home page)
+  const isNavSolid = scrolled || page !== 'home';
 
   return (
     <div className={`min-h-screen ${COLORS.bg} font-sans text-gray-900 selection:bg-[#C5A059] selection:text-white`}>
       <SpectrumBackground />
 
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md py-4' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isNavSolid ? 'bg-white/95 shadow-md py-4' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div
             className="font-bold text-2xl tracking-tighter text-[#013220] cursor-pointer flex flex-col leading-none"
-            onClick={() => setPage('home')}
+            onClick={() => handlePageChange('home')}
           >
-            <span className={scrolled ? "" : "text-white"}>Kesias Mwale</span>
+            <span className={isNavSolid ? "" : "text-white"}>Kesias Mwale</span>
             <span className="text-[11px] tracking-widest text-[#C5A059] uppercase">SG ATU 2026</span>
           </div>
 
@@ -1915,15 +1743,15 @@ export default function App() {
             {navLinks.map(link => (
               <button
                 key={link.id}
-                onClick={() => setPage(link.id)}
-                className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[#C5A059] ${page === link.id ? 'text-[#C5A059]' : (scrolled ? 'text-[#013220]' : 'text-white')}`}
+                onClick={() => handlePageChange(link.id)}
+                className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[#C5A059] ${page === link.id ? 'text-[#C5A059]' : (isNavSolid ? 'text-[#013220]' : 'text-white')}`}
               >
                 {link.label}
               </button>
             ))}
             <button
               onClick={() => {
-                if (page !== 'home') setPage('home');
+                if (page !== 'home') handlePageChange('home');
                 setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
               }}
               className="bg-[#C5A059] text-white px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-[#b08d4b] transition"
@@ -1933,43 +1761,45 @@ export default function App() {
           </div>
 
           {/* Mobile Toggle */}
-          <button className={scrolled ? 'text-[#013220]' : 'text-white'} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button className={isNavSolid ? 'text-[#013220]' : 'text-white'} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex flex-col gap-6 md:hidden border-t">
-            {navLinks.map(link => (
+        {
+          mobileMenuOpen && (
+            <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex flex-col gap-6 md:hidden border-t">
+              {navLinks.map(link => (
+                <button
+                  key={link.id}
+                  onClick={() => handlePageChange(link.id)}
+                  className={`text-left text-lg font-bold uppercase ${page === link.id ? 'text-[#C5A059]' : 'text-[#013220]'}`}
+                >
+                  {link.label}
+                </button>
+              ))}
               <button
-                key={link.id}
-                onClick={() => setPage(link.id)}
-                className={`text-left text-lg font-bold uppercase ${page === link.id ? 'text-[#C5A059]' : 'text-[#013220]'}`}
+                onClick={() => {
+                  if (page !== 'home') handlePageChange('home');
+                  setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                }}
+                className="bg-[#013220] text-white px-6 py-3 rounded text-center font-bold"
               >
-                {link.label}
+                Contact Office
               </button>
-            ))}
-            <button
-              onClick={() => {
-                if (page !== 'home') setPage('home');
-                setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
-              }}
-              className="bg-[#013220] text-white px-6 py-3 rounded text-center font-bold"
-            >
-              Contact Office
-            </button>
-          </div>
-        )}
+            </div>
+          )}
       </nav>
 
       {/* Main Content Router */}
       <main className="relative z-10 min-h-screen flex flex-col">
-        {page === 'home' && <HomePage onNavigate={setPage} />}
+        {page === 'home' && <HomePage onNavigate={handlePageChange} />}
         {page === 'cv' && <CVPage />}
         {page === 'vision' && <VisionPage />}
         {page === 'focus' && <FocusPage />}
         {page === "gallery" && <GalleryPage />}
+        {page === "admin_gallery" && <AdminGalleryPage gallery={CONTENT.gallery} />}
       </main>
 
       {/* Footer */}
@@ -1981,10 +1811,10 @@ export default function App() {
           </div>
           <div className="flex flex-col gap-2">
             <h4 className="text-white font-bold uppercase tracking-widest mb-4">Quick Links</h4>
-            <button onClick={() => setPage('cv')} className="text-left hover:text-[#C5A059]">Curriculum Vitae</button>
-            <button onClick={() => setPage('vision')} className="text-left hover:text-[#C5A059]">Strategic Vision</button>
-            <button onClick={() => setPage('focus')} className="text-left hover:text-[#C5A059]">Stakeholder Focus</button>
-            <button onClick={() => setPage('gallery')} className="text-left hover:text-[#C5A059]">Gallery</button>
+            <button onClick={() => handlePageChange('cv')} className="text-left hover:text-[#C5A059]">Curriculum Vitae</button>
+            <button onClick={() => handlePageChange('vision')} className="text-left hover:text-[#C5A059]">Strategic Vision</button>
+            <button onClick={() => handlePageChange('focus')} className="text-left hover:text-[#C5A059]">Stakeholder Focus</button>
+            <button onClick={() => handlePageChange('gallery')} className="text-left hover:text-[#C5A059]">Gallery</button>
           </div>
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest mb-4">Official Hashtag</h4>
