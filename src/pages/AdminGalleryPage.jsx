@@ -10,7 +10,7 @@ const safeSlug = (s = "") =>
 export default function AdminGalleryPage({ gallery }) {
   const g = gallery || {
     page_title: "Admin Gallery",
-    page_subtitle: "UPLOADS • DRAFTS • PUBLISHING",
+    page_subtitle: "Uploads • Drafts • Publishing",
     upload_help_title: "Upload & Manage Gallery",
     upload_help_steps: [
       "Login first (email/password).",
@@ -267,7 +267,7 @@ export default function AdminGalleryPage({ gallery }) {
           <div className="bg-white rounded-2xl border border-black/5 shadow-sm p-8">
             <form className="space-y-4" onSubmit={signIn}>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                <label className="block text-xs font-bold text-gray-500 mb-2">
                   Email
                 </label>
                 <input
@@ -281,7 +281,7 @@ export default function AdminGalleryPage({ gallery }) {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                <label className="block text-xs font-bold text-gray-500 mb-2">
                   Password
                 </label>
                 <input
@@ -302,7 +302,7 @@ export default function AdminGalleryPage({ gallery }) {
 
               <button
                 disabled={authLoading}
-                className="w-full bg-[#013220] text-white py-3.5 font-bold rounded-xl hover:opacity-95 transition uppercase tracking-widest text-xs"
+                className="w-full bg-[#013220] text-white py-3.5 font-bold rounded-xl hover:opacity-95 transition text-xs"
               >
                 {authLoading ? "Signing in…" : "Sign in"}
               </button>
@@ -323,7 +323,7 @@ export default function AdminGalleryPage({ gallery }) {
         {/* Header */}
         <div className="text-center mb-12">
           <SectionTitle>{g.page_title}</SectionTitle>
-          <p className="text-[#C5A059] font-bold uppercase tracking-widest text-sm">
+          <p className="text-[#C5A059] font-bold text-sm">
             {g.page_subtitle}
           </p>
 
@@ -333,7 +333,7 @@ export default function AdminGalleryPage({ gallery }) {
             <button
               type="button"
               onClick={signOut}
-              className="ml-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-[#013220]/15 hover:border-[#C5A059] hover:text-[#C5A059] transition"
+              className="ml-2 text-xs font-bold px-4 py-2 rounded-full border border-[#013220]/15 hover:border-[#C5A059] hover:text-[#C5A059] transition"
             >
               Sign out
             </button>
@@ -349,7 +349,7 @@ export default function AdminGalleryPage({ gallery }) {
               className="w-full px-8 py-6 flex justify-between items-center"
             >
               <div className="text-left">
-                <div className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+                <div className="text-xs text-gray-400 font-bold">
                   Admin / Upload
                 </div>
                 <h3 className="text-xl font-extrabold text-[#013220] mt-2">
@@ -371,20 +371,20 @@ export default function AdminGalleryPage({ gallery }) {
 
                 <form onSubmit={doUpload} className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                   <div className="md:col-span-5">
-                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                    <label className="block text-xs font-bold text-gray-500 mb-2">
                       Image
                     </label>
                     <input
                       type="file"
                       accept="image/*"
                       onChange={(e) => setFile((e.target.files || [])[0] || null)}
-                      className="block w-full text-sm text-gray-700 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-widest file:bg-[#013220] file:text-white hover:file:bg-[#0E2A1F] cursor-pointer"
+                      className="block w-full text-sm text-gray-700 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#013220] file:text-white hover:file:bg-[#0E2A1F] cursor-pointer"
                     />
 
                     {previewUrl ? (
                       <div className="mt-4 rounded-xl overflow-hidden border border-black/5 bg-white">
                         <img src={previewUrl} alt="preview" className="h-48 w-full object-cover" />
-                        <div className="p-3 text-[11px] uppercase tracking-widest text-gray-600 truncate">
+                        <div className="p-3 text-[11px] text-gray-600 truncate">
                           {file?.name}
                         </div>
                       </div>
@@ -393,7 +393,7 @@ export default function AdminGalleryPage({ gallery }) {
 
                   <div className="md:col-span-7">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                      <label className="block text-xs font-bold text-gray-500 mb-2">
                         Title
                       </label>
                       <input
@@ -405,7 +405,7 @@ export default function AdminGalleryPage({ gallery }) {
                     </div>
 
                     <div className="md:col-span-2">
-                      <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                      <label className="block text-xs font-bold text-gray-500 mb-2">
                         Caption
                       </label>
                       <textarea
@@ -432,9 +432,9 @@ export default function AdminGalleryPage({ gallery }) {
                     <div className="mt-5 flex items-center gap-3">
                       <button
                         disabled={uploading}
-                        className="bg-[#013220] text-white py-3 px-6 font-bold rounded-xl hover:opacity-95 transition uppercase tracking-widest text-xs"
+                        className="bg-[#013220] text-white py-3 px-6 font-bold rounded-xl hover:opacity-95 transition text-xs"
                       >
-                        {uploading ? "Uploading…" : "Upload & Publish"}
+                        {uploading ? "Uploading…" : "Upload & publish"}
                       </button>
                       <button
                         type="button"
@@ -485,7 +485,7 @@ export default function AdminGalleryPage({ gallery }) {
                         </div>
 
                         <span
-                          className={`text-[11px] uppercase tracking-widest font-bold px-3 py-1 rounded-full border ${it.published
+                          className={`text-[11px] font-bold px-3 py-1 rounded-full border ${it.published
                             ? "bg-green-50 text-green-800 border-green-200"
                             : "bg-amber-50 text-amber-800 border-amber-200"
                             }`}
@@ -504,7 +504,7 @@ export default function AdminGalleryPage({ gallery }) {
                         <button
                           type="button"
                           onClick={() => togglePublished(it)}
-                          className="text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-[#013220]/15 hover:border-[#C5A059] hover:text-[#C5A059] transition"
+                          className="text-xs font-bold px-4 py-2 rounded-full border border-[#013220]/15 hover:border-[#C5A059] hover:text-[#C5A059] transition"
                         >
                           {it.published ? "Unpublish" : "Publish"}
                         </button>

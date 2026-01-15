@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { SectionTitle } from "../components/SectionTitle";
 import { X, Maximize2, Loader2, ChevronRight, ChevronLeft } from "lucide-react";
+import { CONTENT } from "../data/content";
+
 
 export default function GalleryPage() {
+    const { gallery } = CONTENT;
+
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -60,13 +64,56 @@ export default function GalleryPage() {
 
                 {/* Header */}
                 <div className="text-center mb-12 max-w-3xl mx-auto">
-                    <SectionTitle>Gallery</SectionTitle>
-                    <p className="text-[#C5A059] font-bold uppercase tracking-widest text-sm mt-4">
-                        Campaign Moments • Diplomatic Engagements • Field Impact
+                    <SectionTitle>{gallery.page_title}</SectionTitle>
+                    <p className="text-[#C5A059] font-bold text-sm mt-4">
+                        {gallery.page_subtitle}
                     </p>
                     <p className="mt-4 text-gray-600 leading-relaxed">
                         Explore the journey through visual moments capturing the essence of the campaign and the vision for the ATU.
                     </p>
+                </div>
+
+                {/* Video Section */}
+                <div className="mb-20">
+                    <div className="bg-[#013220] rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden relative group">
+                        {/* Decorative Background Elements */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C5A059]/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+
+                        <div className="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
+                            <div className="lg:w-1/2 text-white">
+                                <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+                                    Kesias's message
+                                </h2>
+                                <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                                    Watch my address during the African Preparatory Meeting for WTDC-25, where I outline my commitment to accelerating Africa's digital transformation.
+                                </p>
+
+                                <div className="flex flex-wrap gap-4">
+                                    <span className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs font-bold tracking-widest border border-white/10">
+                                        10 April 2025
+                                    </span>
+                                    <span className="px-4 py-2 bg-[#C5A059]/20 backdrop-blur-md rounded-full text-[#C5A059] text-xs font-bold tracking-widest border border-[#C5A059]/30">
+                                        Diplomatic engagement
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="lg:w-1/2 w-full">
+                                <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-xl bg-white/5 p-2 group-hover:border-[#C5A059]/50 transition-colors duration-500">
+                                    <iframe
+                                        className="w-full h-full rounded-xl"
+                                        src={gallery.video_url}
+                                        title="My candidature acknowledgement speech"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -122,8 +169,8 @@ export default function GalleryPage() {
                                                         {item.caption}
                                                     </p>
                                                 )}
-                                                <div className="mt-4 flex items-center gap-2 text-[#C5A059] text-xs font-bold uppercase tracking-widest">
-                                                    <span>View Full</span>
+                                                <div className="mt-4 flex items-center gap-2 text-[#C5A059] text-xs font-bold">
+                                                    <span>View full</span>
                                                     <Maximize2 size={12} />
                                                 </div>
                                             </div>
