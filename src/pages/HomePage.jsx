@@ -567,7 +567,8 @@ const HomePage = ({ onNavigate }) => {
                         <div className="pt-2">
                             <a
                                 href="/docs/candidature-brochure.pdf"
-                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-block text-[11px] font-black text-gray-400 hover:text-[#C5A059] uppercase tracking-[0.2em] border-b border-gray-400 group-hover:border-[#C5A059] transition-all"
                             >
                                 Open Candidate Dossier
@@ -691,7 +692,8 @@ const HomePage = ({ onNavigate }) => {
                                 <a
                                     key={doc.id}
                                     href={doc.url}
-                                    download
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group block p-12 bg-white rounded-xl border border-gray-200 hover:border-[#C5A059] hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
                                 >
                                     <div className="mb-8 text-[#C5A059] group-hover:scale-110 transition-transform duration-500">
