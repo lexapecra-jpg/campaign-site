@@ -70,7 +70,7 @@ const App = () => {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isNavSolid || location.pathname !== '/' ? 'bg-[#F4F7F6] shadow-sm py-4' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <Link to="/" className="flex flex-col leading-none">
-            <span className={`text-2xl font-black uppercase tracking-tight ${isNavSolid || location.pathname !== '/' ? 'text-[#013220]' : 'text-white'}`}>Kesias Mwale</span>
+            <span className={`text-2xl font-black tracking-tight ${isNavSolid || location.pathname !== '/' ? 'text-[#013220]' : 'text-white'}`}>Kesias Mwale</span>
             <span className={`text-xs font-bold tracking-widest ${isNavSolid || location.pathname !== '/' ? 'text-[#C5A059]' : 'text-[#C5A059]'}`}>SG ATU 2026</span>
           </Link>
 

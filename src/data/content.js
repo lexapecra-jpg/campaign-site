@@ -45,7 +45,7 @@ export const CONTENT = {
             name: "Eng. Kezias Kazuba MWALE",
             role: "Director for Radiocommunications",
             election: "Candidate for Secretary General of the ATU 2026",
-            tagline: "ADVANCING ATU TRANSFORMATION – DEEPENING ITS CONTRIBUTION TO THE DIGITAL TRANSFORMATION AGENDAS",
+            tagline: "Advancing ATU Transformation – Deepening its Contribution to the Digital Transformation Agendas",
             image: mwale1Img,
             video: "https://www.youtube.com/embed/hznKq9AvyOo?autoplay=1&mute=1",
             cta_primary: "REQUEST HIGH-LEVEL CONSULTATION",
@@ -70,7 +70,7 @@ export const CONTENT = {
         },
         impactful_contributions: {
             section_title: "MY IMPACTFUL CONTRIBUTIONS",
-            section_subtitle: "BELOW IS AN OUTLINE OF MY IMPACTFUL CONTRIBUTIONS TO ATU TRANSFORMATION IN ALL KEY AREAS AT THE LEVEL OF HEAD OF A DEPARTMENT. CLEARLY, AS THE OVERALL HEAD, I WILL ACHIEVE EVEN GREATER SUCCESS, BENEFITTING MEMBER STATES, THE INSTITUTION AND OUR CONTINENT AS A WHOLE",
+            section_subtitle: "Below is an outline of my impactful contributions to ATU transformation in all key areas at the level of head of a department. Clearly, as the overall head, I will achieve even greater success, benefitting Member States, the institution and our continent as a whole.",
             items: [
                 {
                     id: 1,

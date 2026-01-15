@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Play, TrendingUp, Download, ArrowRight, Flag, Calendar, Mail, Users, Scale, Landmark, Zap, Handshake, Database } from "lucide-react";
+import { Play, TrendingUp, Download, ArrowRight, Flag, Calendar, Mail, Users, Scale, Landmark, Zap, Handshake, Database, FileText, Globe, Award } from "lucide-react";
 import { CONTENT } from "../data/content";
 import mwale1Img from "../assets/mwale1.jpg";
 import mwale2Img from "../assets/mwale2.jpg";
@@ -534,51 +534,56 @@ const HomePage = ({ onNavigate }) => {
     return (
         <div className="animate-fade-in">
             {/* Hero */}
-            <section className="relative min-h-[90vh] flex items-center pt-20">
-                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-6 z-10">
-                        <div className="inline-block bg-[#C5A059] text-white px-3 py-1 text-xs font-bold mb-2">
-                            Official candidate
+            <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+
+                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div className="space-y-6">
+                        <div className="inline-block bg-[#C5A059] text-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] mb-2">
+                            Official Candidate
                         </div>
-                        <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
-                            {CONTENT.home.hero.name}
+                        <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tight">
+                            Eng. Kezias Kazuba <br />
+                            <span className="text-white block mt-2">MWALE</span>
                         </h1>
-                        <h2 className="text-xl md:text-2xl text-gray-200 font-serif italic">
-                            {CONTENT.home.hero.election}
+                        <h2 className="text-xl md:text-2xl text-gray-100 font-serif italic opacity-90">
+                            Candidate for Secretary General of the ATU 2026
                         </h2>
-                        <p className="text-lg text-gray-300 max-w-lg border-l-4 border-[#C5A059] pl-4">
-                            {CONTENT.home.hero.tagline}
-                        </p>
+                        <div className="max-w-lg border-l-2 border-[#C5A059] pl-6 py-2">
+                            <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+                                Advancing ATU Transformation – Deepening its Contribution to the Digital Transformation Agendas
+                            </p>
+                        </div>
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-[#C5A059] text-[#013220] px-8 py-3 rounded-sm font-bold shadow-lg hover:bg-[#b08d4b] transition">
-                                {CONTENT.home.hero.cta_primary}
+                            <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-[#C5A059] text-[#013220] px-8 py-4 font-black shadow-xl hover:bg-[#d4b370] transition-all text-sm uppercase tracking-widest">
+                                Request High-Level Consultation
                             </button>
-                            <button onClick={() => setShowVideo(true)} className="flex items-center gap-2 border-2 border-[#C5A059] text-[#C5A059] px-8 py-3 rounded-sm font-bold hover:bg-[#C5A059] hover:text-[#013220] transition group">
-                                <Play size={18} /> Watch Speech
+                            <button onClick={() => setShowVideo(true)} className="flex items-center gap-3 border-2 border-[#C5A059] text-[#C5A059] px-8 py-4 font-black hover:bg-[#C5A059]/10 transition-all text-sm uppercase tracking-widest">
+                                <span className="w-8 h-8 rounded-full border border-[#C5A059] flex items-center justify-center">
+                                    <Play size={14} fill="currentColor" />
+                                </span>
+                                Watch Speech
                             </button>
                         </div>
-                        <a
-                            href="/docs/candidature-brochure.pdf"
-                            download
-                            className="text-xs text-gray-400 hover:text-white underline decoration-[#C5A059] underline-offset-4"
-                        >
-                            {CONTENT.home.hero.cta_secondary}
-                        </a>
+                        <div className="pt-2">
+                            <a
+                                href="/docs/candidature-brochure.pdf"
+                                download
+                                className="inline-block text-[11px] font-black text-gray-400 hover:text-[#C5A059] uppercase tracking-[0.2em] border-b border-gray-400 group-hover:border-[#C5A059] transition-all"
+                            >
+                                Open Candidate Dossier
+                            </a>
+                        </div>
                     </div>
-                    <div className="relative z-10 lg:h-[600px] flex justify-center items-end">
-                        {/* Abstract shape behind image */}
+                    <div className="relative flex justify-center items-end">
+                        {/* Abstract shape behind image (Restored Glow) */}
                         <div className="absolute inset-0 bg-[#C5A059]/10 rounded-full blur-3xl transform translate-y-20"></div>
-                        {/* Fallback image logic handled by CSS or generic placeholder if needed, using provided GDrive link directly */}
-                        <img
-                            src={CONTENT.home.hero.image}
-                            alt="Eng. Mwale"
-                            className="relative w-full max-w-md object-cover rounded-lg shadow-2xl border-b-8 border-[#C5A059]"
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                if (!mwale1Img) return;
-                                e.target.src = mwale1Img; // Local fallback
-                            }}
-                        />
+                        <div className="relative w-full max-w-md aspect-[4/5] overflow-hidden rounded-xl shadow-2xl border-b-[12px] border-[#C5A059]">
+                            <img
+                                src={CONTENT.home.hero.image}
+                                alt="Eng. Mwale"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -665,34 +670,50 @@ const HomePage = ({ onNavigate }) => {
             <MilestonesSection />
 
             {/* Candidate Dossier (Downloadable) */}
-            <section className="py-20 bg-white">
+            <section className="py-24 bg-[#F8F9F8]">
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <SectionTitle>{CONTENT.home.dossier.section_title}</SectionTitle>
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-100 pb-8">
+                        <div className="relative">
+                            <h2 className="text-3xl md:text-4xl font-black text-[#013220] uppercase tracking-tight">
+                                Official Candidate Dossier
+                            </h2>
+                            <div className="h-1.5 w-24 bg-[#C5A059] mt-4"></div>
+                        </div>
+                        <Link to="/cv" className="flex items-center gap-2 text-sm font-bold text-[#013220] hover:text-[#C5A059] transition-colors mt-4 md:mt-0">
+                            View Full CV <ArrowRight size={16} />
+                        </Link>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                        {CONTENT.home.dossier.documents.map((doc) => (
-                            <a
-                                key={doc.id}
-                                href={doc.url}
-                                download
-                                className={`group block p-8 rounded-xl border border-gray-200 hover:border-[#C5A059] hover:shadow-2xl transition-all duration-300 bg-white relative overflow-hidden ${doc.disabled ? "opacity-60 cursor-not-allowed pointer-events-none" : ""}`}
-                            >
-                                <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition">
-                                    <Download size={48} className="text-[#013220]" />
-                                </div>
-                                <div className="relative z-10">
-                                    <span className="inline-block px-3 py-1 bg-gray-100 text-[10px] font-bold text-gray-500 rounded-full mb-4 group-hover:bg-[#013220] group-hover:text-[#C5A059] transition-colors">
-                                        {doc.category}
-                                    </span>
-                                    <h3 className="text-xl font-bold text-[#013220] mb-2">{doc.title}</h3>
-                                    <p className="text-sm text-gray-500 mb-6">{doc.subtitle}</p>
-                                    <div className="flex items-center gap-2 text-[#C5A059] font-bold text-sm group-hover:translate-x-1 transition-transform">
-                                        {doc.file_type} Download <ArrowRight size={16} />
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {CONTENT.home.dossier.documents.map((doc, idx) => {
+                            const icons = [<Globe size={24} />, <FileText size={24} />, <Award size={24} />];
+                            return (
+                                <a
+                                    key={doc.id}
+                                    href={doc.url}
+                                    download
+                                    className="group block p-12 bg-white rounded-xl border border-gray-200 hover:border-[#C5A059] hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+                                >
+                                    <div className="mb-8 text-[#C5A059] group-hover:scale-110 transition-transform duration-500">
+                                        {icons[idx] || <Download size={24} />}
                                     </div>
-                                </div>
-                            </a>
-                        ))}
+                                    <div className="space-y-4">
+                                        <span className="text-[10px] font-black text-[#C5A059] uppercase tracking-[0.2em]">
+                                            {doc.category}
+                                        </span>
+                                        <h3 className="text-xl font-bold text-[#013220] leading-tight">
+                                            {doc.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-500 leading-relaxed">
+                                            {doc.subtitle}
+                                        </p>
+                                        <div className="pt-4 flex items-center gap-2 text-[11px] font-black text-[#013220] uppercase tracking-widest group-hover:text-[#C5A059] transition-colors">
+                                            Open PDF <Download size={14} />
+                                        </div>
+                                    </div>
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
