@@ -1,5 +1,7 @@
 import mwale1Img from "../assets/mwale1.jpg";
 import mwale2Img from "../assets/mwale2.jpg";
+import mwale3Img from "../assets/mwale3.jpg";
+import mwale4Img from "../assets/mwale4.jpg";
 
 /**
  * CONTENT REPOSITORY
@@ -24,7 +26,7 @@ export const CONTENT = {
         items: [
             {
                 id: "g1",
-                src: "/gallery/mwale-01.jpg",
+                src: mwale2Img,
                 title: "Diplomatic Engagement",
                 caption: "High-level consultation — official meeting.",
                 category: "Diplomacy",
@@ -32,7 +34,7 @@ export const CONTENT = {
             },
             {
                 id: "g2",
-                src: "/gallery/mwale-02.jpg",
+                src: mwale3Img,
                 title: "Programme Delivery",
                 caption: "Coordinating stakeholders towards measurable impact.",
                 category: "Events",
